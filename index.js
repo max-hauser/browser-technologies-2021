@@ -1,1 +1,25 @@
-// mongodb+srv://admin:admin@cluster0.cygbh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+const session = require('express-session');
+const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
+require('dotenv').config()
+
+// Connection URI
+const uri = process.env.URI;
+// Create a new MongoClient
+const client = new MongoClient(uri);
+async function run() {
+  try {
+    // Connect the client to the server
+    await client.connect();
+    // Establish and verify connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Connected successfully to server");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
