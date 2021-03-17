@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>tshirt design</title>
+</head>
+<body>
+  <form action="/" method="post">
+    <fieldset>
+      <legend>Persoonsgegevens</legend>
+      <label for="fname">First name:</label><br>
+      <input type="text" id="fname" name="fname"><br>
+      <label for="email">Last name:</label><br>
+      <input type="email" id="email" name="email">
+  </fieldset> 
+
+  <fieldset>
+      <legend>T-shirt</legend>
+      <label for="gender">Geslacht</label>      
+      <ul>
+        <li><label for="male">Man</label><input type="radio" id="male" name="male" value="male"><br></li>
+        <li><label for="female">Vrouw</label><input type="radio" id="female" name="female" value="female"><br></li>        
+      </ul>
+      <label for="gender">Maat</label>
+      <ul>
+        <li><label for="small">Small</label><input type="radio" id="small" name="small" value="small"><br></li>
+        <li><label for="medium">Medium</label><input type="radio" id="medium" name="medium" value="medium"><br></li>
+        <li><label for="large">Large</label><input type="radio" id="large" name="large" value="large"><br></li>
+      </ul>
+      <label for="color">T-shirt kleur</label><br>
+      <input type="color" name="color" id="color"><br><br>
+      <label for="text">Tekst</label><br>
+      <input type="text" name="text" id="text"><br>
+      <label for="font">Lettertype</label>
+      <ul>
+          <li><label for="sans-serif">Sans-serif</label><input type="radio" id="sans-serif" name="sans-serif" value="sans-serif"><br></li>
+          <li><label for="serif">serif</label><input type="radio" id="serif" name="serif" value="serif"><br></li>
+          <li><label for="arial">arial</label><input type="radio" id="airal" name="arial" value="arial"><br></li>
+        </ul> 
+        <label for="positie">Positie</label>
+        <ul>
+            <li><label for="top">Top</label><input type="radio" id="top" name="top" value="top"><br></li>
+            <li><label for="center">Center</label><input type="radio" id="center" name="center" value="center"><br></li>
+            <li><label for="bottom">Bottom</label><input type="radio" id="bottom" name="bottom" value="bottom"><br></li>
+          </ul>              
+  </fieldset>
+  
+  <fieldset>
+    <legend>Bezorgadres</legend>
+    <label for="land">Land</label><br>
+    <input type="text" name="land" id="land"><br><br>
+    <label for="city">Plaatsnaam</label><br>
+    <input type="text" name="city" id="city"><br><br>
+    <label for="postal">Postcode</label><br>
+    <input type="text" name="postal" id="postal"><br><br>
+    <label for="street">Straatnaam</label><br>
+    <input type="text" name="street" id="street"><br><br>
+    <label for="housenumber">Huisnummer + toevoeging</label><br>
+    <input type="text" name="housenumber" id="housenumber">   
+  </fieldset>
+
+  <fieldset>
+    <legend>Bestellen</legend>
+    <label for="send">Bestellen</label><br>
+    <input type="submit" value="Bestellen" name="send">
+  </fieldset>
+  </form>
+</body>
+</html>
