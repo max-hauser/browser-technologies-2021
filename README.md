@@ -13,11 +13,11 @@ Het web is voor iedereen met een computer en een browser. In het vak Browser Tec
 
 ### Opdracht 1 🛹 NPM install Progressive- enhancement
 
-[link naar opdracht 1]
+[link naar opdracht 1](https://max-hauser.github.io/browser-technologies-2021/Opdracht1/index.html)
 
 ### Opdracht 2 💔 Breek het Web
 
-[link naar opdracht 2]
+[link naar opdracht 2](https://github.com/max-hauser/browser-technologies-2021/wiki/Opdracht-2:-Breek-het-web)
 
 ### De eindopdracht ✨ Progressive Enhanced Browser Technologie
 
