@@ -58,6 +58,6 @@ Als eerste heb ik een wireflow van de webapp gemaakt, om te kijken hoe de webapp
 
 
 ### Install guide
-* ``` git clone ```
+* ``` git clone git@github.com:max-hauser/browser-technologies-2021.git```
 * install live-server plugin bij vs-code
 * openen met live-server
