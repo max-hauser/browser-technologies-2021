@@ -38,7 +38,7 @@ app
 }))
 
 .get('/', function(req, res){
-  res.render('index')
+  res.render('index', {user:req.session.user})
 })
 
 .get('/viewOrder', async function(req, res){
@@ -61,6 +61,43 @@ app
 
 .get('/register', function(req, res){
   res.render('register')
+})
+
+.get('/login', function(req, res){
+  res.render('login')
+})
+
+.get('/userpage', function(req, res){
+  db.collection('bestelling').find({email: req.session.user.email}).toArray(check);
+
+  async function check(err, data) {
+    if(err){
+      console.log(err)
+    }else{
+      if(data.length >= 1){
+        const designData = [];
+          for( const shirt of data) {
+          const tshirtKleur = shirt.color;
+          const tshirt = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${tshirtKleur}.*`}});
+          const designInfo = {
+            image: tshirt.image,
+            size: shirt.size,
+            gender: shirt.gender,
+            text: shirt.text,
+            font: shirt.font,
+            fontColor: shirt.fontColor
+          };
+          designData.push(designInfo);
+        }
+        if(designData.length >= 1){
+          res.render('userpage', {user: req.session.user, bestellingen: designData})
+        }
+      }else{
+        console.log("nog geen bestellingen")
+        res.render('userpage', {user: req.session.user})
+      }
+    }
+  }
 })
 
 .post('/admin',upload.single('tshirt') ,function(req, res){
@@ -115,9 +152,7 @@ app
 })
 
 .post('/register', async function(req, res){
-  console.log(req.body)
   const checkUser = await db.collection('users').findOne({email: req.body.email});
-  console.log(checkUser);
   if(checkUser != null){
     console.log("no no no, gebruiker bestaat al!");
   }else{
@@ -133,7 +168,44 @@ app
       housenumber: req.body.housenumber   
     }, res.redirect('/register'))    
   }
+})
 
+.post('/login', async function(req, res){
+  const query = {
+    email: {$eq: req.body.email},
+    password: {$eq: req.body.wachtwoord}
+  }
+  db.collection('users').find(query).toArray(check);
+
+  function check(err, data) {
+    if(err){
+      console.log(err)
+    }else{
+      if(data.length >= 1){
+        const session_user = data.map(data => data.firstname);
+        const session_email = data.map(data => data.email);
+        const session_gender = data.map(data => data.gender);
+        const session_land = data.map(data => data.land);
+        const session_city = data.map(data => data.city);
+        const session_postal = data.map(data => data.postal);
+        const session_street = data.map(data => data.street);
+        const session_housenumber = data.map(data => data.housenumber);
+        
+        req.session.user = {
+          firstname: session_user.toString(),
+          email: session_email.toString(),
+          gender: session_gender.toString(),
+          land: session_land.toString(),
+          city: session_city.toString(),
+          postal: session_postal.toString(),
+          street: session_street.toString(),
+          housenumber: session_housenumber.toString()
+        }
+
+        res.redirect('/userpage')
+      }
+    }
+  }
 })
 
 .listen(PORT, ()=> console.log(`App listening at http://localhost:${PORT}`));

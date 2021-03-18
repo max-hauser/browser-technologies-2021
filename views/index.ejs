@@ -7,12 +7,13 @@
   <title>tshirt design</title>
 </head>
 <body>
+    <% console.log(user) %>
     <noscript>Met javascript, kunnen we je persoonlijke bestellingen opslaan!</noscript>
   <form action="/viewOrder" method="post">
     <fieldset>
       <legend>Persoonsgegevens</legend>
       <label for="fname">First name:</label><br>
-      <input type="text" id="fname" name="fname" required><br>
+      <input type="text" id="fname" name="fname" required value=""><br>
       <label for="email">Email:</label><br>
       <input type="email" id="email" name="email" required>
   </fieldset> 
