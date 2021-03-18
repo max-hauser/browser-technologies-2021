@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/admin" method="post" enctype="multipart/form-data">
+    <label for="tshirt">Upload t-shirt image</label><br>
+    <input type="file" name="tshirt" accept="image/*" id="tshirt"><br><br>
+    <label for="kleur">Kleur</label><br>
+    <input type="text" name="kleur" id="kleur"><br><br>
+    <label for="type">Type</label><br>
+    <input type="text" name="type" id="type" value="ronde hals"><br><br>
+    <input type="submit" value="toevoegen">
+  </form>
+</body>
+</html>

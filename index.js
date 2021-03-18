@@ -7,6 +7,8 @@ const mongo = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 const MemoryStore = require('memorystore')(session)
 require('dotenv').config()
+const multer = require('multer')
+const upload = multer({dest: 'static/images/uploads/'})
 
 let db;
 const db_key = process.env.URI;
@@ -23,7 +25,7 @@ MongoClient.connect(db_key, {useNewUrlParser: true, useUnifiedTopology: true}, f
 app
 
 .set('view engine', 'ejs')
-.use(express.static('static'))
+.use(express.static(__dirname + '/static'))
 .use(express.json())
 .use(express.urlencoded())
 .use(session({
@@ -39,8 +41,30 @@ app
   res.render('index')
 })
 
-.get('/viewOrder', function(req, res){
-  res.render('viewOrder', {bestelling: req.session.bestelling})
+.get('/viewOrder', async function(req, res){
+  if(req.session.bestelling.color){
+    try{
+      const afbeelding = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${req.session.bestelling.color}.*`}});
+      res.render('viewOrder', {bestelling: req.session.bestelling, img: afbeelding.image})
+    }
+    catch(error){
+      console.error(error);
+    }
+  }else{
+    console.log('something went wrong..');
+  }
+})
+
+.get('/admin', function(req, res){
+  res.render('admin')
+})
+
+.post('/admin',upload.single('tshirt') ,function(req, res){
+  db.collection('tshirts').insertOne({
+    image: req.file ? req.file.filename : null,
+    kleur: req.body.kleur,
+    type: req.body.type
+  }, res.render('admin'))
 })
 
 .post('/viewOrder', function(req, res){

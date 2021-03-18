@@ -8,9 +8,34 @@
 </head>
 <body>
   <h1>Hey <%= bestelling.firstname %>, bedankt voor je bestelling!</h1>
-  <p>
-    Je hebt een t-shirt besteld in de kleur <%= bestelling.color%>, maat: <%= bestelling.size%>,
-    met de tekst: <%= bestelling.text%>
-  </p>
+
+  <section>
+    <h2>Bestelling informatie</h2>
+    <p>
+        Je hebt een t-shirt besteld in de kleur <%= bestelling.color%>, maat: <%= bestelling.size%>,
+        met de tekst: <%= bestelling.text%>
+    </p>
+
+    <table>
+      <thead>
+        <th>tshirt</th>
+        <th>kleur</th>
+        <th>maat</th>
+        <th>tekst</th>
+        <th>geslacht</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="images/uploads/<%=img %>" style="width: 150px"></td>
+          <td><%= bestelling.color%></td>
+          <td><%= bestelling.size%></td>
+          <td><%= bestelling.text%></td>
+          <td><%= bestelling.gender%></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button onclick="window.print()">Print this page</button>
+  </section>
 </body>
 </html>
