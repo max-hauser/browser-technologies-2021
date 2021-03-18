@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3000;
 const session = require('express-session');
 const url = require('url'); 
 const mongo = require('mongodb');
+const ObjectId = require('mongodb').ObjectID;
 const MongoClient = require('mongodb').MongoClient;
 const MemoryStore = require('memorystore')(session)
 require('dotenv').config()
@@ -38,14 +39,19 @@ app
 }))
 
 .get('/', function(req, res){
-  res.render('index', {user:req.session.user})
+  console.log(req.session.user);
+  if(req.session.user){
+    res.render('login')
+  }else{
+    res.redirect('home')
+  }
 })
 
 .get('/viewOrder', async function(req, res){
   if(req.session.bestelling.color){
     try{
       const afbeelding = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${req.session.bestelling.color}.*`}});
-      res.render('viewOrder', {bestelling: req.session.bestelling, img: afbeelding.image})
+      res.render('viewOrder', {bestelling: req.session.bestelling, img: afbeelding.image, user: req.session.user})
     }
     catch(error){
       console.error(error);
@@ -59,6 +65,19 @@ app
   res.render('admin')
 })
 
+.get('/new', function(req, res){
+  if(req.session.user){
+    res.render('new', {user: req.session.user})
+  }else{
+    res.render('new',{user: ""})
+  }
+})
+
+.get('/home', function(req, res){
+  res.render('home')
+})
+
+
 .get('/register', function(req, res){
   res.render('register')
 })
@@ -67,7 +86,13 @@ app
   res.render('login')
 })
 
+.get('/edit/:id', async function(req, res) {
+  const data = await db.collection('bestelling').findOne({_id: ObjectId(req.params.id)});
+  res.render('edit', {id: req.body.id, bestelling: data})
+})
+
 .get('/userpage', function(req, res){
+  console.log(req.session)
   db.collection('bestelling').find({email: req.session.user.email}).toArray(check);
 
   async function check(err, data) {
@@ -80,6 +105,7 @@ app
           const tshirtKleur = shirt.color;
           const tshirt = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${tshirtKleur}.*`}});
           const designInfo = {
+            id: shirt._id,
             image: tshirt.image,
             size: shirt.size,
             gender: shirt.gender,
@@ -109,6 +135,8 @@ app
 })
 
 .post('/viewOrder', function(req, res){
+  if(req.body.fname == undefined){ req.body.fname = req.session.user.firstname;}
+  if(req.body.email == undefined){ req.body.email = req.session.user.email;}
   db.collection('bestelling').insertOne({
     firstname: req.body.fname,
     email: req.body.email,
@@ -201,11 +229,56 @@ app
           street: session_street.toString(),
           housenumber: session_housenumber.toString()
         }
-
         res.redirect('/userpage')
       }
     }
   }
 })
 
+.post('/edit', function(req, res){
+  console.log(req.body.id)
+  db.collection('bestelling').updateOne({
+    _id: ObjectId(req.body.id)
+  }, {
+    $set: {
+      firstname: req.body.fname,
+      email: req.body.email,
+      gender: req.body.gender,
+      size: req.body.size,
+      color: req.body.color,
+      text: req.body.text,
+      font: req.body.font,
+      fontColor: req.body.fontColor,
+      pos: req.body.pos,
+      land: req.body.land,
+      city: req.body.city,
+      postal: req.body.postal,
+      street: req.body.street,
+      housenumber: req.body.housenumber
+    },
+  }, updateBestelling)
+
+  function updateBestelling(err, data){
+    if(err){
+      console.log(err)
+    }else{
+      res.redirect('/userpage')
+    }
+  }
+})
+
+.post('/userpage', logout)
+
 .listen(PORT, ()=> console.log(`App listening at http://localhost:${PORT}`));
+
+
+function checkSession(req, res){
+  if(!req.session.user){
+    res.redirect('/home')
+  }
+}
+
+function logout(req, res){
+  req.session.destroy();
+  res.redirect('/home')
+}

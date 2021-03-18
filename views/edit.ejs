@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>tshirt design</title>
+</head>
+<body>
+    <noscript>Met javascript, kunnen we je persoonlijke bestellingen opslaan!</noscript>
+    <% console.log(bestelling) %>
+  <form action="/edit" method="post">
+    <fieldset>
+      <legend>Persoonsgegevens</legend>
+      <label for="fname">First name:</label><br>
+      <input type="text" id="fname" name="fname" required value="<%= bestelling.firstname%>"><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" value="<%= bestelling.email%>" required>
+  </fieldset> 
+
+  <fieldset>
+      <legend>T-shirt</legend>
+      <label for="">Geslacht</label>      
+      <ul>
+        <li><label for="gender">Man</label><input type="radio" id="male" name="gender" value="male" required <%if(bestelling.gender == "male"){%>checked<%}%>><br></li>
+        <li><label for="gender">Vrouw</label><input type="radio" id="female" name="gender" value="female" <%if(bestelling.gender == "female"){%>checked<%}%>><br></li>        
+      </ul>
+      <label for="">Maat</label>
+      <ul>
+        <li><label for="size">Small</label><input type="radio" id="small" name="size" value="small" required<%if(bestelling.size == "small"){%>checked<%}%>><br></li>
+        <li><label for="size">Medium</label><input type="radio" id="medium" name="size" value="medium" <%if(bestelling.size == "medium"){%>checked<%}%>><br></li>
+        <li><label for="size">Large</label><input type="radio" id="large" name="size" value="large" <%if(bestelling.size == "large"){%>checked<%}%>><br></li>
+      </ul>
+      <label for="">T-shirt kleur</label><br>
+      <ul>
+        <li><label for="color">Zwart</label><input type="radio" id="black" name="color" value="zwart" required <%if(bestelling.color == "zwart"){%>checked<%}%>><br></li>
+        <li><label for="color">Wit</label><input type="radio" id="white" name="color" value="wit" <%if(bestelling.color == "wit"){%>checked<%}%>><br></li>
+        <li><label for="color">Rood</label><input type="radio" id="red" name="color" value="rood" <%if(bestelling.color == "rood"){%>checked<%}%>><br></li>
+        <li><label for="color">Geel</label><input type="radio" id="yellow" name="color" value="geel"<%if(bestelling.color == "geel"){%>checked<%}%>><br></li>
+        <li><label for="color">Groen</label><input type="radio" id="green" name="color" value="groen" <%if(bestelling.color == "groen"){%>checked<%}%>><br></li>
+      </ul>
+      <label for="text">Tekst</label><br>
+      <input type="text" name="text" id="text" required value="<%= bestelling.text%>"><br>
+      <label for="">Lettertype</label>
+      <ul>
+          <li><label for="font">Sans-serif</label><input type="radio" id="sans-serif" name="font" value="sans-serif" <%if(bestelling.font == "sans-serif"){%>checked<%}%>><br></li>
+          <li><label for="font">serif</label><input type="radio" id="serif" name="font" value="serif" required <%if(bestelling.font == "serif"){%>checked<%}%>><br></li>
+          <li><label for="font">arial</label><input type="radio" id="airal" name="font" value="arial <%if(bestelling.font == "arial"){%>checked<%}%>"><br></li>
+      </ul>
+      <label for="">Tekstkleur</label>
+      <ul>
+          <li><label for="fontColor">Zwart</label><input type="radio" id="sans-serif" name="fontColor" value="#000000" <%if(bestelling.fontColor == "#000000"){%>checked<%}%>><br></li>
+          <li><label for="fontColor">Wit</label><input type="radio" id="sans-serif" name="fontColor" value="#ffffff" required <%if(bestelling.fontColor == "#ffffff"){%>checked<%}%>><br></li>
+      </ul>        
+      <label for="pos">Positie</label>
+        <ul>
+            <li><label for="pos">Top</label><input type="radio" id="top" name="pos" value="top" <%if(bestelling.pos == "top"){%>checked<%}%>><br></li>
+            <li><label for="pos">Center</label><input type="radio" id="center" name="pos" value="center" required <%if(bestelling.pos == "center"){%>checked<%}%>><br></li>
+            <li><label for="pos">Bottom</label><input type="radio" id="bottom" name="pos" value="bottom" <%if(bestelling.pos == "bottom"){%>checked<%}%>><br></li>
+          </ul>              
+  </fieldset>
+  
+  <fieldset>
+    <legend>Bezorgadres</legend>
+    <label for="land">Land</label><br>
+    <input type="text" name="land" id="land" required value="<%= bestelling.land%>"><br><br>
+    <label for="city">Plaatsnaam</label><br>
+    <input type="text" name="city" id="city" required value="<%= bestelling.city%>"><br><br>
+    <label for="postal">Postcode</label><br>
+    <input type="text" name="postal" id="postal" required value="<%= bestelling.postal%>"><br><br>
+    <label for="street">Straatnaam</label><br>
+    <input type="text" name="street" id="street" required value="<%= bestelling.street%>"><br><br>
+    <label for="housenumber">Huisnummer + toevoeging</label><br>
+    <input type="text" name="housenumber" id="housenumber" required value="<%= bestelling.housenumber%>">   
+  </fieldset>
+
+  <fieldset>
+    <legend>Bewerken</legend>
+    <label for="send">Bewerken</label><br>
+    <input type="hidden" name="id" value="<%= bestelling._id%>">
+    <input type="submit" value="Bewerken" name="send">
+  </fieldset>
+  </form>
+</body>
+</html>

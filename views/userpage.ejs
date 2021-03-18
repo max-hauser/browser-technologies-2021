@@ -7,13 +7,18 @@
   <title>Document</title>
 </head>
 <body>
+  <form action="/userpage" method="post">
+    <input type="submit" value="Uitloggen">
+  </form>
   <h1>Hi, <%= user.firstname%></h1>
-  <a href="/">Nieuw t-shirt ontwerpen!</a>
+  <a href="/new">Nieuw t-shirt ontwerpen!</a>
   <% bestellingen.forEach(bestelling => { %>
-    <article>
-      <p><img src="images/uploads/<%= bestelling.image%>" style="width: 150px"></p>
-      <p><%= bestelling.text%></p>
-     </article> 
+    <a href="/edit/<%- bestelling.id%>"> 
+      <article>
+        <p><img src="images/uploads/<%= bestelling.image%>" style="width: 150px"></p>
+        <p><%= bestelling.text%></p>
+      </article> 
+    </a>
   <%})%>  
 </body>
 </html>
