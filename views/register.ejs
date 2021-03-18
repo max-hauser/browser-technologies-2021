@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Register</title>
+</head>
+<body>
+  <form action="/register" method="post">
+    <fieldset>
+        <legend>Persoonsgegevens</legend>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" required><br>
+        <label for="">Geslacht</label>      
+        <ul>
+          <li><label for="gender">Man</label><input type="radio" id="male" name="gender" value="male" required><br></li>
+          <li><label for="gender">Vrouw</label><input type="radio" id="female" name="gender" value="female"><br></li>        
+        </ul>        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="wachtwoord">Wachtwoord:</label><br>
+        <input type="password" id="wachtwoord" name="wachtwoord" required>        
+    </fieldset>
+    <fieldset>
+        <legend>Bezorgadres</legend>
+        <label for="land">Land</label><br>
+        <input type="text" name="land" id="land" required><br><br>
+        <label for="city">Plaatsnaam</label><br>
+        <input type="text" name="city" id="city" required><br><br>
+        <label for="postal">Postcode</label><br>
+        <input type="text" name="postal" id="postal" required><br><br>
+        <label for="street">Straatnaam</label><br>
+        <input type="text" name="street" id="street" required><br><br>
+        <label for="housenumber">Huisnummer + toevoeging</label><br>
+        <input type="text" name="housenumber" id="housenumber" required>   
+      </fieldset>
+      <fieldset>
+          <legend>Account aanmaken</legend>
+          <label for="send">Account aanmaken</label><br>
+          <input type="submit" value="Account aanmaken" name="send">
+        </fieldset>          
+  </form>
+</body>
+</html>

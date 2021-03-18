@@ -59,6 +59,10 @@ app
   res.render('admin')
 })
 
+.get('/register', function(req, res){
+  res.render('register')
+})
+
 .post('/admin',upload.single('tshirt') ,function(req, res){
   db.collection('tshirts').insertOne({
     image: req.file ? req.file.filename : null,
@@ -108,6 +112,28 @@ app
       res.redirect('/viewOrder')
     }
   }
+})
+
+.post('/register', async function(req, res){
+  console.log(req.body)
+  const checkUser = await db.collection('users').findOne({email: req.body.email});
+  console.log(checkUser);
+  if(checkUser != null){
+    console.log("no no no, gebruiker bestaat al!");
+  }else{
+    db.collection('users').insertOne({
+      firstname: req.body.fname,
+      email: req.body.email,   
+      gender: req.body.gender,   
+      password: req.body.wachtwoord,
+      land: req.body.land,
+      city: req.body.city,
+      postal: req.body.postal,
+      street: req.body.street,
+      housenumber: req.body.housenumber   
+    }, res.redirect('/register'))    
+  }
+
 })
 
 .listen(PORT, ()=> console.log(`App listening at http://localhost:${PORT}`));
