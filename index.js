@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const session = require('express-session');
+const url = require('url'); 
 const mongo = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
+const MemoryStore = require('memorystore')(session)
 require('dotenv').config()
 
 let db;
@@ -24,13 +26,24 @@ app
 .use(express.static('static'))
 .use(express.json())
 .use(express.urlencoded())
+.use(session({
+  resave: false,
+  saveUninitialized: true,
+  secret: '343ji43j4n3jn4jk4n',
+  store: new MemoryStore({
+    checkPeriod: 86400000
+  })
+}))
 
 .get('/', function(req, res){
   res.render('index')
 })
 
+.get('/viewOrder', function(req, res){
+  res.render('viewOrder', {bestelling: req.session.bestelling})
+})
+
 .post('/viewOrder', function(req, res){
-  console.log(req.body);
   db.collection('bestelling').insertOne({
     firstname: req.body.fname,
     email: req.body.email,
@@ -52,7 +65,23 @@ app
     if(err){
       console.log(err)
     }else{
-      res.send('/viewOrder')
+      req.session.bestelling = {
+        firstname: req.body.fname,
+        email: req.body.email,
+        gender: req.body.gender,
+        size: req.body.size,
+        color: req.body.color,
+        text: req.body.text,
+        font: req.body.font,
+        fontColor: req.body.fontColor,
+        pos: req.body.pos,
+        land: req.body.land,
+        city: req.body.city,
+        postal: req.body.postal,
+        street: req.body.street,
+        housenumber: req.body.housenumber
+      }
+      res.redirect('/viewOrder')
     }
   }
 })
