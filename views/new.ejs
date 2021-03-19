@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>tshirt design</title>
-</head>
-<body>
-    <noscript>Met javascript, kunnen we je persoonlijke bestellingen opslaan!</noscript>
-  <form action="/viewOrder" method="post">
+<%- include("../partials/head")%>
+<%- include("../partials/header")%>
+ <form action="/viewOrder" method="post">
     <% if(user == ""){%>
     <fieldset>
       <legend>Persoonsgegevens</legend>
@@ -81,5 +73,4 @@
     <input type="submit" value="Bestellen" name="send">
   </fieldset>
   </form>
-</body>
-</html>
+  <%- include("../partials/footer")%>
