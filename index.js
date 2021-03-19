@@ -39,7 +39,6 @@ app
 }))
 
 .get('/', function(req, res){
-  console.log(req.session.user);
   if(req.session.user){
     res.render('login')
   }else{
@@ -91,8 +90,101 @@ app
   res.render('edit', {id: req.body.id, bestelling: data})
 })
 
+.get('/new-credentials', function(req, res){
+  res.render('new-credentials')
+})
+
+.get('/new-tshirt', function(req, res){
+  res.render('new-tshirt')
+})
+
+.get('/new-delivery', function(req, res){
+  res.render('new-delivery')
+})
+
+.post('/succes', async function(req, res){
+  db.collection('bestelling').insertOne({
+    firstname: req.session.newOrder.firstname,
+    email: req.session.newOrder.email,
+    gender: req.session.newOrder.gender,
+    size: req.session.newOrder.size,
+    color: req.session.newOrder.color,
+    text: req.session.newOrder.text,
+    font: req.session.newOrder.font,
+    fontColor: req.session.newOrder.fontColor,
+    pos: req.session.newOrder.pos,
+    land: req.session.newOrder.land,
+    city: req.session.newOrder.city,
+    postal: req.session.newOrder.postal,
+    street: req.session.newOrder.street,
+    housenumber: req.session.newOrder.housenumber
+  }, () => {
+    res.redirect('home')
+  })  
+})
+
+.post('/new-tshirt', function(req, res){
+  req.session.newOrder = {
+    firstname: req.body.fname,
+    email: req.body.email,
+    gender: "",
+    size:  "",
+    color:  "",
+    text:  "",
+    font:  "",
+    fontColor:  "",
+    pos:  "",
+    land:  "",
+    city:  "",
+    postal:  "",
+    street:  "",
+    housenumber:  ""
+  }
+  res.render('new-tshirt')
+})
+
+.post('/new-delivery', function(req, res){
+  req.session.newOrder = {
+    firstname: req.session.newOrder.firstname,
+    email: req.session.newOrder.email,
+    gender: req.body.gender,
+    size: req.body.size,
+    color: req.body.color,
+    text: req.body.text,
+    font: req.body.font,
+    fontColor: req.body.fontColor,
+    pos: req.body.pos,
+    land:  "",
+    city:  "",
+    postal:  "",
+    street:  "",
+    housenumber:  ""
+  }
+  res.render('new-delivery')
+})
+
+.post('/check-order', async function(req, res){
+  req.session.newOrder = {
+    firstname: req.session.newOrder.firstname,
+    email: req.session.newOrder.email,
+    gender: req.session.newOrder.gender,
+    size: req.session.newOrder.size,
+    color: req.session.newOrder.color,
+    text: req.session.newOrder.text,
+    font: req.session.newOrder.font,
+    fontColor: req.session.newOrder.fontColor,
+    pos: req.session.newOrder.pos,
+    land: req.body.land,
+    city: req.body.city,
+    postal: req.body.postal,
+    street: req.body.street,
+    housenumber: req.body.housenumber
+  }
+  const afbeelding = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${req.session.newOrder.color}.*`}});
+  res.render('check-order', {order: req.session.newOrder, img: afbeelding.image})
+})
+
 .get('/userpage', function(req, res){
-  console.log(req.session)
   db.collection('bestelling').find({email: req.session.user.email}).toArray(check);
 
   async function check(err, data) {
@@ -241,8 +333,8 @@ app
     _id: ObjectId(req.body.id)
   }, {
     $set: {
-      firstname: req.body.fname,
-      email: req.body.email,
+      firstname: req.session.user.firstname,
+      email: req.session.user.email,
       gender: req.body.gender,
       size: req.body.size,
       color: req.body.color,
@@ -250,11 +342,11 @@ app
       font: req.body.font,
       fontColor: req.body.fontColor,
       pos: req.body.pos,
-      land: req.body.land,
-      city: req.body.city,
-      postal: req.body.postal,
-      street: req.body.street,
-      housenumber: req.body.housenumber
+      land: req.session.user.land,
+      city: req.session.user.city,
+      postal: req.session.user.postal,
+      street: req.session.user.street,
+      housenumber: req.session.user.housenumber
     },
   }, updateBestelling)
 

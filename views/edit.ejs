@@ -2,14 +2,6 @@
 <%- include("../partials/header")%>
     <% console.log(bestelling) %>
   <form action="/edit" method="post">
-    <fieldset>
-      <legend>Persoonsgegevens</legend>
-      <label for="fname">First name:</label><br>
-      <input type="text" id="fname" name="fname" required value="<%= bestelling.firstname%>"><br>
-      <label for="email">Email:</label><br>
-      <input type="email" id="email" name="email" value="<%= bestelling.email%>" required>
-  </fieldset> 
-
   <fieldset>
       <legend>T-shirt</legend>
       <label for="">Geslacht</label>      
@@ -50,20 +42,6 @@
             <li><label for="pos">Center</label><input type="radio" id="center" name="pos" value="center" required <%if(bestelling.pos == "center"){%>checked<%}%>><br></li>
             <li><label for="pos">Bottom</label><input type="radio" id="bottom" name="pos" value="bottom" <%if(bestelling.pos == "bottom"){%>checked<%}%>><br></li>
           </ul>              
-  </fieldset>
-  
-  <fieldset>
-    <legend>Bezorgadres</legend>
-    <label for="land">Land</label><br>
-    <input type="text" name="land" id="land" required value="<%= bestelling.land%>"><br><br>
-    <label for="city">Plaatsnaam</label><br>
-    <input type="text" name="city" id="city" required value="<%= bestelling.city%>"><br><br>
-    <label for="postal">Postcode</label><br>
-    <input type="text" name="postal" id="postal" required value="<%= bestelling.postal%>"><br><br>
-    <label for="street">Straatnaam</label><br>
-    <input type="text" name="street" id="street" required value="<%= bestelling.street%>"><br><br>
-    <label for="housenumber">Huisnummer + toevoeging</label><br>
-    <input type="text" name="housenumber" id="housenumber" required value="<%= bestelling.housenumber%>">   
   </fieldset>
 
   <fieldset>

@@ -1,0 +1,35 @@
+<%- include("../partials/head")%>
+<%- include("../partials/header")%>
+<% console.log(order) %>
+<section>
+  <h2>Bestelling informatie</h2>
+  <p>
+      Je hebt een t-shirt besteld in de kleur <%= order.color%>, maat: <%= order.size%>,
+      met de tekst: <%= order.text%>
+  </p>
+
+  <table>
+    <thead>
+      <th>tshirt</th>
+      <th>kleur</th>
+      <th>maat</th>
+      <th>tekst</th>
+      <th>geslacht</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="images/uploads/<%=img %>" style="width: 150px"></td>
+        <td><%= order.color%></td>
+        <td><%= order.size%></td>
+        <td><%= order.text%></td>
+        <td><%= order.gender%></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button onclick="window.print()">Print this page</button>
+
+<form action="/succes" method="post">
+<input type="submit" value="Bestellen">  
+</form>
+<%- include("../partials/footer")%>

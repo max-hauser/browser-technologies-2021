@@ -1,0 +1,19 @@
+<%- include("../partials/head")%>
+<%- include("../partials/header")%>
+<form action="/check-order" method="post">
+  <fieldset>
+    <legend>Bezorgadres</legend>
+    <label for="land">Land</label><br>
+    <input type="text" name="land" id="land" required><br><br>
+    <label for="city">Plaatsnaam</label><br>
+    <input type="text" name="city" id="city" required><br><br>
+    <label for="postal">Postcode</label><br>
+    <input type="text" name="postal" id="postal" required><br><br>
+    <label for="street">Straatnaam</label><br>
+    <input type="text" name="street" id="street" required><br><br>
+    <label for="housenumber">Huisnummer + toevoeging</label><br>
+    <input type="text" name="housenumber" id="housenumber" required>   
+  </fieldset>
+  <input type="submit" value="Bestellen">
+</form>
+<%- include("../partials/footer")%>

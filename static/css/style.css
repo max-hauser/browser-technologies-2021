@@ -23,7 +23,12 @@ header em{
   font-style: normal;
 }
 
-button, input[type="submit"]{
+header a{
+  text-decoration: none;
+  color: #000;
+}
+
+button, input[type="submit"], nav a{
   padding: 10px 20px;
   background-color: #f5f5f5;
   color: #303030;
@@ -31,9 +36,10 @@ button, input[type="submit"]{
   border-radius: 10px;
   font-weight: 600;
   transition: background-color 0.5s ease;
+  text-decoration: none;
 }
 
-button, input[type="submit"]:hover{
+button, nav a, .home a:hover{
   background-color: #dfdfdf;
   cursor: pointer;
 }
@@ -45,4 +51,19 @@ footer{
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.home hr {
+  display: none;
+}
+
+.home a{
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  color: #303030;
+  border: 1px solid #303030;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background-color 0.5s ease;
+  text-decoration: none;
 }

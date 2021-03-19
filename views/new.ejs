@@ -2,13 +2,14 @@
 <%- include("../partials/header")%>
  <form action="/viewOrder" method="post">
     <% if(user == ""){%>
-    <fieldset>
-      <legend>Persoonsgegevens</legend>
-      <label for="fname">First name:</label><br>
-      <input type="text" id="fname" name="fname" required value=""><br>
-      <label for="email">Email:</label><br>
-      <input type="email" id="email" name="email" required>
-  </fieldset> 
+
+        <fieldset>
+          <legend>Persoonsgegevens</legend>
+          <label for="fname">First name:</label><br>
+          <input type="text" id="fname" name="fname" required value=""><br>
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" required>
+      </fieldset> 
   <%}%>
 
   <fieldset>
@@ -52,7 +53,7 @@
             <li><label for="pos">Bottom</label><input type="radio" id="bottom" name="pos" value="bottom"><br></li>
           </ul>              
   </fieldset>
-  
+
   <fieldset>
     <legend>Bezorgadres</legend>
     <label for="land">Land</label><br>
