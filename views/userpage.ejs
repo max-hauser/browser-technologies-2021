@@ -1,16 +1,16 @@
 <%- include("../partials/head")%>
 <%- include("../partials/header")%>
-  <form action="/userpage" method="post">
-    <input type="submit" value="Uitloggen">
-  </form>
+<div class="userpage">
   <h1>Hi, <%= user.firstname%></h1>
   <a href="/new">Nieuw t-shirt ontwerpen!</a>
   <% bestellingen.forEach(bestelling => { %>
+    <% console.log(bestelling) %>
     <a href="/edit/<%- bestelling.id%>"> 
       <article>
-        <p><img src="images/uploads/<%= bestelling.image%>" style="width: 150px"></p>
-        <p><%= bestelling.text%></p>
-      </article> 
-    </a>
+        <img src="images/uploads/<%= bestelling.image%>" style="width: 150px">
+        <p style="font-family: <%= bestelling.font %>; color: <%= bestelling.fontColor %>"><%= bestelling.text%></p>
+      </article>      
+    </a>    
   <%})%>  
+</div>
   <%- include("../partials/footer")%>

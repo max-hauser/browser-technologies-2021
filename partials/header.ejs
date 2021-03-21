@@ -1,7 +1,15 @@
 <header>
   <em><a href="/home">Tshirt designer</a></em>
+  
   <nav>
-    <a href="/login">Inloggen</a>
-    <a href="/register">Account aanmaken</a>
+
+    <% if(user == "guest"){ %>
+      <a href="/login">Inloggen</a>
+      <a href="/register">Account aanmaken</a>
+    <%}else{%>
+      <form action="/userpage" method="post">
+        <input type="submit" value="Uitloggen">
+      </form>   
+      <%}%>
   </nav>
 </header>

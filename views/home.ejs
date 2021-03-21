@@ -1,8 +1,19 @@
 <%- include("../partials/head")%>
 <%- include("../partials/header")%>
   <div class="home">
-    <h1>Ontwerp je eigen tshirt</h1>
-    <a href="/new-credentials">Gelijk aan de slag als gast</a>
-    
+    <header>
+      <h1>Ontwerp je eigen tshirt</h1>
+      <a href="/new-credentials">Gelijk aan de slag als gast</a>
+    </header>
+
+    <section>
+      <h2>Uitgelichte ontwerpen</h2>
+      <% ontwerpen.forEach(ontwerp => { %>
+          <article>
+            <img src="images/uploads/<%= ontwerp.shirtImg%>" style="width: 150px">
+            <p style="color: <%= ontwerp.shirtfontColor%>; font-family: <%= ontwerp.shirtFont%>"><%= ontwerp.shirtText%></p>
+          </article> 
+      <%})%>        
+    </section>
   </div>
 <%- include("../partials/footer")%>

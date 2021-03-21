@@ -10,97 +10,37 @@ const MemoryStore = require('memorystore')(session)
 require('dotenv').config()
 const multer = require('multer')
 const upload = multer({dest: 'static/images/uploads/'})
+let userInfo = "";
 
 let db;
 const db_key = process.env.URI;
 MongoClient.connect(db_key, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
   if(err){
     throw err
-  }else{
-
   }
   db = client.db('mydb');
 });
 
 
 app
-
 .set('view engine', 'ejs')
 .use(express.static(__dirname + '/static'))
 .use(express.json())
 .use(express.urlencoded())
-.use(session({
-  resave: false,
-  saveUninitialized: true,
-  secret: '343ji43j4n3jn4jk4n',
-  store: new MemoryStore({
-    checkPeriod: 86400000
-  })
-}))
-
-.get('/', function(req, res){
-  if(req.session.user){
-    res.render('login')
-  }else{
-    res.redirect('home')
-  }
-})
-
-.get('/viewOrder', async function(req, res){
-  if(req.session.bestelling.color){
-    try{
-      const afbeelding = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${req.session.bestelling.color}.*`}});
-      res.render('viewOrder', {bestelling: req.session.bestelling, img: afbeelding.image, user: req.session.user})
-    }
-    catch(error){
-      console.error(error);
-    }
-  }else{
-    console.log('something went wrong..');
-  }
-})
-
-.get('/admin', function(req, res){
-  res.render('admin')
-})
-
-.get('/new', function(req, res){
-  if(req.session.user){
-    res.render('new', {user: req.session.user})
-  }else{
-    res.render('new',{user: ""})
-  }
-})
-
-.get('/home', function(req, res){
-  res.render('home')
-})
+.use(session({resave: false, saveUninitialized: true, secret: '343ji43j4n3jn4jk4n', store: new MemoryStore({ checkPeriod: 86400000})}))
 
 
-.get('/register', function(req, res){
-  res.render('register')
-})
-
-.get('/login', function(req, res){
-  res.render('login')
-})
-
-.get('/edit/:id', async function(req, res) {
-  const data = await db.collection('bestelling').findOne({_id: ObjectId(req.params.id)});
-  res.render('edit', {id: req.body.id, bestelling: data})
-})
-
-.get('/new-credentials', function(req, res){
-  res.render('new-credentials')
-})
-
-.get('/new-tshirt', function(req, res){
-  res.render('new-tshirt')
-})
-
-.get('/new-delivery', function(req, res){
-  res.render('new-delivery')
-})
+.get('/viewOrder', check_session, load_viewOrder)
+.get('/admin', check_session, load_admin)
+.get('/new', check_session, load_new)
+.get('/home', check_session, load_home) 
+.get('/register', check_session, load_register)
+.get('/login', check_session, load_login)
+.get('/edit/:id', check_session, load_edit) 
+.get('/new-credentials', check_session, load_new_credentials)
+.get('/new-tshirt', check_session, load_new_tshirt)
+.get('/new-delivery', check_session, load_new_delivery)
+.get('/userpage', check_session, load_userpage)
 
 .post('/succes', async function(req, res){
   db.collection('bestelling').insertOne({
@@ -181,41 +121,7 @@ app
     housenumber: req.body.housenumber
   }
   const afbeelding = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${req.session.newOrder.color}.*`}});
-  res.render('check-order', {order: req.session.newOrder, img: afbeelding.image})
-})
-
-.get('/userpage', function(req, res){
-  db.collection('bestelling').find({email: req.session.user.email}).toArray(check);
-
-  async function check(err, data) {
-    if(err){
-      console.log(err)
-    }else{
-      if(data.length >= 1){
-        const designData = [];
-          for( const shirt of data) {
-          const tshirtKleur = shirt.color;
-          const tshirt = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${tshirtKleur}.*`}});
-          const designInfo = {
-            id: shirt._id,
-            image: tshirt.image,
-            size: shirt.size,
-            gender: shirt.gender,
-            text: shirt.text,
-            font: shirt.font,
-            fontColor: shirt.fontColor
-          };
-          designData.push(designInfo);
-        }
-        if(designData.length >= 1){
-          res.render('userpage', {user: req.session.user, bestellingen: designData})
-        }
-      }else{
-        console.log("nog geen bestellingen")
-        res.render('userpage', {user: req.session.user})
-      }
-    }
-  }
+  res.render('check-order', {order: req.session.newOrder, img: afbeelding.image, user: userInfo})
 })
 
 .post('/admin',upload.single('tshirt') ,function(req, res){
@@ -227,6 +133,7 @@ app
 })
 
 .post('/viewOrder', function(req, res){
+  console.log(req.session)
   if(req.body.fname == undefined){ req.body.fname = req.session.user.firstname;}
   if(req.body.email == undefined){ req.body.email = req.session.user.email;}
   db.collection('bestelling').insertOne({
@@ -364,13 +271,129 @@ app
 .listen(PORT, ()=> console.log(`App listening at http://localhost:${PORT}`));
 
 
-function checkSession(req, res){
-  if(!req.session.user){
-    res.redirect('/home')
-  }
+
+function check_session(req, res, next) {
+  if(req.session.user === undefined){
+    userInfo = "guest";
+  }else{
+    userInfo = req.session.user;
+  } 
+  console.log(userInfo);
+  next();
 }
 
 function logout(req, res){
   req.session.destroy();
   res.redirect('/home')
+}
+
+// ------------------------------------------------------------------------------------------------------------------
+// render page functions
+//---------------------------------------------------------------------------------------------------------------------
+
+async function load_viewOrder(req, res, next){
+  if(req.session.bestelling.color){
+    try{
+      const afbeelding = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${req.session.bestelling.color}.*`}});
+      res.render('viewOrder', {bestelling: req.session.bestelling, img: afbeelding.image, user: req.session.user})
+    }
+    catch(error){
+      console.error(error);
+    }
+  }else{
+    console.log('something went wrong..');
+  }
+}
+
+function load_admin(req, res){
+  res.render('admin')
+}
+
+function load_new(req, res){
+  if(req.session.user){
+    res.render('new', {user: req.session.user})
+  }else{
+    res.render('new',{user: userInfo})
+  }
+}
+
+function load_home(req, res, next){
+  db.collection("bestelling").find({}).toArray(async function(err, result) {
+    if (err) throw err;
+    const tshirtDesigns = [];
+    for (const shirt in result) {
+        const tshirtKleur = result[shirt].color;
+        const tshirtText = result[shirt].text;
+        const tshirtFont = result[shirt].font;
+        const tshirtFontColor = result[shirt].fontColor;
+        const tshirtImg = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${tshirtKleur}.*`}});
+        tshirtDesigns.push({
+          shirtkleur: tshirtKleur,
+          shirtText: tshirtText,
+          shirtFont: tshirtFont,
+          shirtfontColor: tshirtFontColor,
+          shirtImg: tshirtImg.image
+        });
+    }
+    res.render('home', {ontwerpen: tshirtDesigns, user: userInfo});
+  });  
+}
+
+function load_register(req, res){
+  res.render('register', {user: userInfo})
+}
+
+function load_login(req, res){
+  res.render('login', {user: userInfo})
+}
+
+async function load_edit(req, res) {
+  const data = await db.collection('bestelling').findOne({_id: ObjectId(req.params.id)});
+  res.render('edit', {id: req.body.id, bestelling: data, user: userInfo})
+}
+
+function load_new_credentials(req, res){
+  res.render('new-credentials', {user: userInfo})
+}
+
+function load_new_tshirt(req, res){
+  res.render('new-tshirt', {user: userInfo})
+}
+
+function load_new_delivery(req, res){
+  res.render('new-delivery', {user: userInfo})
+}
+
+function load_userpage(req, res){
+  db.collection('bestelling').find({email: req.session.user.email}).toArray(check);
+
+  async function check(err, data) {
+    if(err){
+      console.log(err)
+    }else{
+      if(data.length >= 1){
+        const designData = [];
+          for( const shirt of data) {
+          const tshirtKleur = shirt.color;
+          const tshirt = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${tshirtKleur}.*`}});
+          const designInfo = {
+            id: shirt._id,
+            image: tshirt.image,
+            size: shirt.size,
+            gender: shirt.gender,
+            text: shirt.text,
+            font: shirt.font,
+            fontColor: shirt.fontColor
+          };
+          designData.push(designInfo);
+        }
+        if(designData.length >= 1){
+          res.render('userpage', {user: userInfo, bestellingen: designData})
+        }
+      }else{
+        console.log("nog geen bestellingen")
+        res.render('userpage', {user: userInfo})
+      }
+    }
+  }
 }
