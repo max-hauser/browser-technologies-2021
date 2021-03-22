@@ -146,3 +146,7 @@ main nav form{
   width: auto;
   box-shadow: none;
 }
+
+.userpage a {
+  text-decoration: none;
+}

@@ -29,7 +29,7 @@ app
 .use(express.urlencoded())
 .use(session({resave: false, saveUninitialized: true, secret: '343ji43j4n3jn4jk4n', store: new MemoryStore({ checkPeriod: 86400000})}))
 
-
+.get('/', check_session, check_status)
 .get('/viewOrder', check_session, load_viewOrder)
 .get('/admin', check_session, load_admin)
 .get('/new', check_session, load_new)
@@ -268,7 +268,7 @@ app
 
 .post('/userpage', logout)
 
-.listen(PORT, ()=> console.log(`App listening at http://localhost:${PORT}`));
+
 
 
 
@@ -303,6 +303,10 @@ async function load_viewOrder(req, res, next){
   }else{
     console.log('something went wrong..');
   }
+}
+
+function check_status(req, res){
+  load_home(req, res)
 }
 
 function load_admin(req, res){
@@ -397,3 +401,5 @@ function load_userpage(req, res){
     }
   }
 }
+
+app.listen(PORT, ()=> console.log(`App listening at http://localhost:${PORT}`));
