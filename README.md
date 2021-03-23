@@ -26,22 +26,18 @@ Als onderwerp heb ik gekozen voor een t-shirt ontwerp webapplicatie.
 
 ### Features
 
-##### HTML5
-* FETCH
-* HTML
-* DOM
+#### Core functionality
 
-##### CSS
-* Animations
-* Feature Queries (@supports)
-* Grid-layout
-* Flex-box
+Het hoofddoel van deze applicatie is om tekst op een t-shirt te krijgen, en deze vervolgens op te kunnen slaan.
+
+#### Features
+* als gast een ontwerp maken
+* inloggen / registreren
+* ontwerpen aanpassen
+* ontwerp printen
 
 ##### Storage & Files
-* Web Storage
-
-##### Foundations
-* Cookies
+* MongoDB
 
 ### Getest op de browsers
 * Google Chrome
@@ -53,7 +49,7 @@ Als onderwerp heb ik gekozen voor een t-shirt ontwerp webapplicatie.
 
 Als eerste heb ik een wireflow van de webapp gemaakt, om te kijken hoe de webapp in elkaar zal steken.
 
-[link naar de wireflow]
+![Wireflow van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/wireflow.png)
 
 
 
