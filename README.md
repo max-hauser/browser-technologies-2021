@@ -4,7 +4,7 @@ Robuuste, toegankelijke websites ontwerpen en maken …
 
 Het web is voor iedereen met een computer en een browser. In het vak Browser Technologies ga ik onderzoeken wat Progressive Enhancement is en hoe ik dit kan toepassen om goede, robuuste, toegankelijke websites te maken. Voor iedereen.
 
-![afbeelding van project](https://max-hauser.github.io/browser-technologies-2021/heroimage.png)
+![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/heroimage.png)
 
 ### live link
 
