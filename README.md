@@ -8,7 +8,7 @@ Het web is voor iedereen met een computer en een browser. In het vak Browser Tec
 
 ### live link
 
-[link naar live webapp](max-hauser.github.io/browser-technologies-2021/)
+[link naar live webapp](https://tshirtshine.herokuapp.com/)
 
 
 ### Opdracht 1 🛹 NPM install Progressive- enhancement
