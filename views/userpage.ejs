@@ -1,6 +1,6 @@
 <%- include("../partials/head")%>
 <%- include("../partials/header")%>
-<div class="userpage">
+<section class="userpage">
   <h1>Hi, <%= user.firstname%></h1>
   <a href="/new">Nieuw t-shirt ontwerpen!</a>
   <% bestellingen.forEach(bestelling => { %>
@@ -12,5 +12,5 @@
       </article>      
     </a>    
   <%})%>  
-</div>
+</section>
   <%- include("../partials/footer")%>

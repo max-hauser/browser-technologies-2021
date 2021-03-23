@@ -3,41 +3,46 @@
 body{
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #f1f1f1;
 }
 
 
 header{
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #d0d0d0;
+  background-color: #fff;
   padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-header em{
+header em a{
   font-size: 2em;
   font-style: normal;
+  color: #101010;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-weight: bolder;
 }
 
 header a{
   text-decoration: none;
-  color: #000;
+  color: #fff;
 }
 
-button, input[type="submit"], nav a{
+header a:not(em > a), input[type="submit"]{
+  background-color: #ffff00;
   padding: 10px 20px;
-  background-color: #f5f5f5;
-  color: #303030;
-  border: 1px solid #303030;
-  border-radius: 10px;
+  color: #000;
   font-weight: 600;
   transition: background-color 0.5s ease;
   text-decoration: none;
+  border: none;
+  font-family: sans-serif;  
 }
 
-button, nav a, .home a:hover{
-  background-color: #dfdfdf;
+
+button:hover, nav a:hover, .home a:hover{
+  background-color: rgb(182, 169, 23);
   cursor: pointer;
 }
 
@@ -54,28 +59,52 @@ footer{
   display: none;
 }
 
-.home a{
-  padding: 10px 20px;
-  background-color: #f5f5f5;
-  color: #303030;
-  border: 1px solid #303030;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: background-color 0.5s ease;
-  text-decoration: none;
+fieldset{
+  border: none;
+  padding: 0px;
 }
 
+fieldset legend{
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+fieldset input{
+  margin: 10px 0px;
+}
+
+
 .home header{
-  background-color:green;
-  padding: 100px;
+  background: linear-gradient(-45deg, #0c256f, blue);
+  padding: 100px 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  color: #fff;
 }
 
 .home section{
   padding: 15px;
+  background-color: #fff;
+  margin: 15px;
+  box-shadow: 0px 0px 15px #ddd;
+  border: 1px solid #d0d0d0;
+  display: inline-block;
 }
+
+.home section:nth-child(2){
+  width: calc(100% - 30px);
+}
+
+.home section:nth-child(3),
+.home section:nth-child(4),
+.home section:nth-child(5){
+  width: 31%;
+  height: 150px;
+  background-color: blue;
+  color: #fff;
+}
+
 
 .home article {
   display: inline-block;
@@ -104,7 +133,7 @@ main form {
   margin-top: 100px;
   margin-bottom: 100px;
   padding: 15px;
-  background-color: #f1f1f1;
+  background-color: #fff;
   box-shadow: 0px 10px 15px #d0d0d0;
   border-radius: 5px;
   max-width: 500px;
@@ -149,4 +178,40 @@ main nav form{
 
 .userpage a {
   text-decoration: none;
+}
+
+form ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+form label{
+  font-weight: bold;
+}
+
+form ul label{
+  margin-right: 5px;
+  font-weight: unset;
+}
+
+
+form ul li {
+  line-height: 4px;
+  padding-right: 10px;
+  margin: 0;
+  display: inline-block;
+}
+
+form input{
+  margin-bottom: 10px
+}
+
+section.userpage {
+  background: #fff;
+  margin: 15px;
+  padding: 15px;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0px 0px 15px #ddd;
 }

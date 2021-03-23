@@ -80,7 +80,7 @@ app
     street:  "",
     housenumber:  ""
   }
-  res.render('new-tshirt')
+  res.render('new-tshirt', {user: userInfo})
 })
 
 .post('/new-delivery', function(req, res){
@@ -100,7 +100,7 @@ app
     street:  "",
     housenumber:  ""
   }
-  res.render('new-delivery')
+  res.render('new-delivery', {user: userInfo})
 })
 
 .post('/check-order', async function(req, res){
