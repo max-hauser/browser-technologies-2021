@@ -1,47 +1,106 @@
 <%- include("../partials/head")%>
-<%- include("../partials/header")%>
 <form action="/new-delivery" method="post">
   <fieldset>
     <legend>T-shirt</legend>
     <label for="">Geslacht</label>      
-    <ul>
-      <li><label for="gender">Man</label><input type="radio" id="male" name="gender" value="male" required><br></li>
-      <li><label for="gender">Vrouw</label><input type="radio" id="female" name="gender" value="female"><br></li>        
+    <ul class="gender">
+      <li><label for="male"><span>&#129492;</span><p>Man</p></label><input type="radio" id="male" name="gender" value="male" required><br></li>
+      <li><label for="female"><span>&#129489;</span><p>Vrouw</p></label><input type="radio" id="female" name="gender" value="female"><br></li>        
     </ul>
     <label for="">Maat</label>
     <ul>
-      <li><label for="size">Small</label><input type="radio" id="small" name="size" value="small" required><br></li>
-      <li><label for="size">Medium</label><input type="radio" id="medium" name="size" value="medium"><br></li>
-      <li><label for="size">Large</label><input type="radio" id="large" name="size" value="large"><br></li>
+      <li><label for="small">Small</label><input type="radio" id="small" name="size" value="small" required><br></li>
+      <li><label for="medium">Medium</label><input type="radio" id="medium" name="size" value="medium"><br></li>
+      <li><label for="large">Large</label><input type="radio" id="large" name="size" value="large"><br></li>
     </ul>
     <label for="">T-shirt kleur</label><br>
-    <ul>
-      <li><label for="color">Zwart</label><input type="radio" id="black" name="color" value="zwart" required><br></li>
-      <li><label for="color">Wit</label><input type="radio" id="white" name="color" value="wit"><br></li>
-      <li><label for="color">Rood</label><input type="radio" id="red" name="color" value="rood"><br></li>
-      <li><label for="color">Geel</label><input type="radio" id="yellow" name="color" value="geel"><br></li>
-      <li><label for="color">Groen</label><input type="radio" id="green" name="color" value="groen"><br></li>
+    <ul class="shirtColor">
+      <li><label for="black">Zwart</label><input type="radio" id="black" name="color" value="zwart" required><br></li>
+      <li><label for="white">Wit</label><input type="radio" id="white" name="color" value="wit"><br></li>
+      <li><label for="red">Rood</label><input type="radio" id="red" name="color" value="rood"><br></li>
+      <li><label for="yellow">Geel</label><input type="radio" id="yellow" name="color" value="geel"><br></li>
+      <li><label for="green">Groen</label><input type="radio" id="green" name="color" value="groen"><br></li>
     </ul>
     <label for="text">Tekst</label><br>
     <input type="text" name="text" id="text" required><br>
     <label for="">Lettertype</label>
-    <ul>
-        <li><label for="font">Sans-serif</label><input type="radio" id="sans-serif" name="font" value="sans-serif"><br></li>
-        <li><label for="font">serif</label><input type="radio" id="serif" name="font" value="serif" required><br></li>
-        <li><label for="font">arial</label><input type="radio" id="airal" name="font" value="arial"><br></li>
+    <ul class="font">
+        <li><label for="sans-serif">Sans-serif</label><input type="radio" id="sans-serif" name="font" value="sans-serif" style="font-family: sans-serif;"><br></li>
+        <li><label for="serif">serif</label><input type="radio" id="serif" name="font" value="serif" required style="font-family: serif;"><br></li>
+        <li><label for="arial">arial</label><input type="radio" id="arial" name="font" value="arial" style="font-family: Arial, Helvetica, sans-serif;"><br></li>
     </ul>
     <label for="">Tekstkleur</label>
-    <ul>
-        <li><label for="fontColor">Zwart</label><input type="radio" id="sans-serif" name="fontColor" value="#000000"><br></li>
-        <li><label for="fontColor">Wit</label><input type="radio" id="sans-serif" name="fontColor" value="#ffffff" required><br></li>
+    <ul class="textColor">
+        <li><label for="whiteFont">Zwart</label><input type="radio" id="whiteFont" name="fontColor" value="#000000"><br></li>
+        <li><label for="blackFont">Wit</label><input type="radio" id="blackFont" name="fontColor" value="#ffffff" required><br></li>
     </ul>        
     <label for="pos">Positie</label>
-      <ul>
-          <li><label for="pos">Top</label><input type="radio" id="top" name="pos" value="top"><br></li>
-          <li><label for="pos">Center</label><input type="radio" id="center" name="pos" value="center" required><br></li>
-          <li><label for="pos">Bottom</label><input type="radio" id="bottom" name="pos" value="bottom"><br></li>
+      <ul class="pos">
+          <li><label for="top">Top</label><input type="radio" id="top" name="pos" value="10"><br></li>
+          <li><label for="center">Center</label><input type="radio" id="center" name="pos" value="50" required><br></li>
+          <li><label for="bottom">Bottom</label><input type="radio" id="bottom" name="pos" value="80"><br></li>
         </ul>              
 </fieldset>
 <input type="submit" value="Bezorggegevens">  
 </form>
+
+<script>
+  let kleur = "wit";
+  const form = document.querySelector('form'); 
+  const main = document.querySelector('main'); 
+  const viewer = `
+  <section class="viewer">
+    <h2>voorbeeld</h2>
+    <span class="shirtInfo">
+      <img src="images/${kleur}.png" alt="t-shirt">
+      <p class="exampleText"></p>
+    </span>
+  </section>
+  `;
+  form.insertAdjacentHTML("beforebegin", viewer);
+  main.style.display = "flex";
+  main.style.justifyContent = "space-around";
+
+  const image = document.querySelector('img');
+  const shirtKleuren = document.querySelectorAll('.shirtColor li');
+
+  shirtKleuren.forEach((shirtKleur) => {
+    shirtKleur.addEventListener('click', (event)=>{
+      const targetKleur = event.target;
+      if(targetKleur.nodeName == "INPUT"){
+        kleur = targetKleur.value;
+        image.src = `images/${targetKleur.value}.png`;
+      }
+    })
+  });
+
+  const tekst = document.querySelector("#text");
+  const exampleText = document.querySelector(".exampleText");
+  tekst.addEventListener('input', (event)=>{
+    exampleText.innerHTML = event.target.value;
+  })
+
+const tekstKleuren = document.querySelectorAll('.textColor input');
+tekstKleuren.forEach((tekstKleur)=>{
+  tekstKleur.addEventListener("click", (e)=>{
+    exampleText.style.color = e.target.value;
+  })
+})
+
+const tekstFont = document.querySelectorAll('.font input');
+tekstFont.forEach((font)=>{
+  font.addEventListener("click", (e)=>{
+    exampleText.style.fontFamily = e.target.value;
+  })
+})
+
+const tekstPos = document.querySelectorAll('.pos input');
+tekstPos.forEach((pos)=>{
+  pos.addEventListener("click", (e)=>{
+    exampleText.style.marginTop = e.target.value + "%";
+  })
+})
+
+
+</script>
 <%- include("../partials/footer")%>
