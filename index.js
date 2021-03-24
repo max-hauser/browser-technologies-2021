@@ -278,7 +278,6 @@ function check_session(req, res, next) {
   }else{
     userInfo = req.session.user;
   } 
-  console.log(userInfo);
   next();
 }
 

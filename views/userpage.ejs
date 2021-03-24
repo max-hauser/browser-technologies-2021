@@ -7,7 +7,7 @@
     <% console.log(bestelling) %>
     <a href="/edit/<%- bestelling.id%>"> 
       <article>
-        <img src="images/uploads/<%= bestelling.image%>" style="width: 150px">
+        <img src="images/uploads/<%= bestelling.image%>" style="width: 150px" alt="t-shirt">
         <p style="font-family: <%= bestelling.font %>; color: <%= bestelling.fontColor %>"><%= bestelling.text%></p>
       </article>      
     </a>    

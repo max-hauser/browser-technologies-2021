@@ -111,6 +111,7 @@ fieldset input{
   position: relative;
   min-width: 150px;
   margin-right: 15px;
+  text-align: center;
 }
 
 .home article p {
@@ -214,4 +215,36 @@ section.userpage {
   padding: 15px;
   border: 1px solid #d0d0d0;
   box-shadow: 0px 0px 15px #ddd;
+}
+
+@media only screen and (max-width: 600px) {
+  header a:not(em > a), input[type="submit"] {
+    display: block;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.home section:nth-child(3), .home section:nth-child(4), .home section:nth-child(5) {
+  display: block;
+  width: auto;
+}
+
+.home header {
+  padding: 50px 15px;
+}
+
+article {
+  width: 100%;
+  text-align: center;
+}
+}
+
+@supports (display: grid) {
+  section:nth-child(2) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  section:nth-child(2) :first-child {
+    grid-column: 1 / -1;
+  }
 }
