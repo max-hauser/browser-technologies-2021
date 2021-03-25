@@ -26,6 +26,9 @@ Als onderwerp heb ik gekozen voor een t-shirt ontwerp webapplicatie.
 
 ### Wat is Progressive Enhancement?
 
+Progressive Enhancement is een manier van denken, waarbij je begint bij een sterke basis, die het altijd doet. Vandaar uit
+bouw je verder en maak je de ervaring beter en beter.
+
 #### Hoe heb ik het toegepast?
 
 ![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/PE.png)
