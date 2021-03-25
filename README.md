@@ -24,6 +24,12 @@ Het web is voor iedereen met een computer en een browser. In het vak Browser Tec
 Voor de eindopdracht ontwerp en maak ik een interactieve toepassing volgens het principe van Progressive Enhancement. 
 Als onderwerp heb ik gekozen voor een t-shirt ontwerp webapplicatie. 
 
+### Wat is Progressive Enhancement?
+
+#### Hoe heb ik het toegepast?
+
+![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/PE.png)
+
 ### Features
 
 #### Core functionality
