@@ -73,6 +73,11 @@ fieldset input{
   margin: 10px 0px;
 }
 
+.home section article h3 {
+  visibility: hidden;
+  position: absolute;
+}
+
 
 .home header{
   background: linear-gradient(-45deg, #0c256f, blue);
@@ -122,7 +127,7 @@ fieldset input{
   right: 0;
   display: block;
   text-align: center;
-  top: 80px;
+  top: 25px;
   z-index: 1;
   max-width: 50%;    
 }
@@ -354,3 +359,25 @@ p.exampleText {
   word-wrap: break-word;
   font-size: 1.3em;
 }
+
+img#output{
+  width: 50px;
+}
+
+span.shirtInfo {
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+  justify-content: center;
+}
+
+span.shirtInfo div{
+  width: 50%;
+  min-height: 80px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 0px auto;
+}
+

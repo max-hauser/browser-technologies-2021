@@ -43,6 +43,7 @@ app
 .get('/userpage', check_session, load_userpage)
 
 .post('/succes', async function(req, res){
+    console.log(req.session.newOrder)
   db.collection('bestelling').insertOne({
     firstname: req.session.newOrder.firstname,
     email: req.session.newOrder.email,
@@ -57,7 +58,8 @@ app
     city: req.session.newOrder.city,
     postal: req.session.newOrder.postal,
     street: req.session.newOrder.street,
-    housenumber: req.session.newOrder.housenumber
+    housenumber: req.session.newOrder.housenumber,
+    image: req.session.newOrder.image
   }, () => {
     res.redirect('home')
   })  
@@ -78,12 +80,13 @@ app
     city:  "",
     postal:  "",
     street:  "",
-    housenumber:  ""
+    housenumber:  "",
+    image: "",
   }
   res.render('new-tshirt', {user: userInfo})
 })
 
-.post('/new-delivery', function(req, res){
+.post('/new-delivery', upload.single('afbeelding') , function(req, res){
   req.session.newOrder = {
     firstname: req.session.newOrder.firstname,
     email: req.session.newOrder.email,
@@ -98,7 +101,8 @@ app
     city:  "",
     postal:  "",
     street:  "",
-    housenumber:  ""
+    housenumber:  "",
+    image: req.file ? req.file.filename : null
   }
   res.render('new-delivery', {user: userInfo})
 })
@@ -118,7 +122,8 @@ app
     city: req.body.city,
     postal: req.body.postal,
     street: req.body.street,
-    housenumber: req.body.housenumber
+    housenumber: req.body.housenumber,
+    image: req.session.newOrder.image
   }
   const afbeelding = await db.collection('tshirts').findOne({"kleur" : {$regex : `.*${req.session.newOrder.color}.*`}});
   res.render('check-order', {order: req.session.newOrder, img: afbeelding.image, user: userInfo})
@@ -150,7 +155,8 @@ app
     city: req.body.city,
     postal: req.body.postal,
     street: req.body.street,
-    housenumber: req.body.housenumber
+    housenumber: req.body.housenumber,
+    image: req.file ? req.file.filename : null
   }, viewOrder)
 
   function viewOrder(err, data){
@@ -171,7 +177,8 @@ app
         city: req.body.city,
         postal: req.body.postal,
         street: req.body.street,
-        housenumber: req.body.housenumber
+        housenumber: req.body.housenumber,
+        image: req.file ? req.file.filename : null
       }
       res.redirect('/viewOrder')
     }
@@ -235,7 +242,6 @@ app
 })
 
 .post('/edit', function(req, res){
-  console.log(req.body.id)
   db.collection('bestelling').updateOne({
     _id: ObjectId(req.body.id)
   }, {
@@ -392,10 +398,12 @@ function load_userpage(req, res){
         }
         if(designData.length >= 1){
           res.render('userpage', {user: userInfo, bestellingen: designData})
+        }else{
+          res.render('userpage', {user: userInfo, bestellingen: "nope"})
         }
       }else{
         console.log("nog geen bestellingen")
-        res.render('userpage', {user: userInfo})
+        res.render('userpage', {user: userInfo, bestellingen: "nope"})
       }
     }
   }

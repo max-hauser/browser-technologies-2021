@@ -1,5 +1,5 @@
 <%- include("../partials/head")%>
-<form action="/new-delivery" method="post">
+<form action="/new-delivery" method="post" enctype="multipart/form-data">
   <fieldset>
     <legend>T-shirt</legend>
     <label for="">Geslacht</label>      
@@ -37,9 +37,14 @@
     <label for="pos">Positie</label>
       <ul class="pos">
           <li><label for="top">Top</label><input type="radio" id="top" name="pos" value="10"><br></li>
-          <li><label for="center">Center</label><input type="radio" id="center" name="pos" value="50" required><br></li>
-          <li><label for="bottom">Bottom</label><input type="radio" id="bottom" name="pos" value="80"><br></li>
+          <li><label for="center">Center</label><input type="radio" id="center" name="pos" value="25" required><br></li>
+          <li><label for="bottom">Bottom</label><input type="radio" id="bottom" name="pos" value="45"><br></li>
         </ul>              
+</fieldset>
+
+<fieldset>
+  <legend>Afbeelding</legend>
+  <input type="file" name="afbeelding" accept="image/*" id="afbeelding">
 </fieldset>
 <input type="submit" value="Bezorggegevens">  
 </form>
@@ -52,14 +57,16 @@
   <section class="viewer">
     <h2>voorbeeld</h2>
     <span class="shirtInfo">
-      <img src="images/${kleur}.png" alt="t-shirt">
-      <p class="exampleText"></p>
+      <div class="drop"><p class="exampleText"></p></div>
+      <div class="drop"><img src="" alt="" id="output" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)"></div>
+      <div class="drop"></div>
     </span>
   </section>
   `;
   form.insertAdjacentHTML("beforebegin", viewer);
   main.style.display = "flex";
   main.style.justifyContent = "space-around";
+  const shirtInfo = document.querySelector(".shirtInfo");
 
   const image = document.querySelector('img');
   const shirtKleuren = document.querySelectorAll('.shirtColor li');
@@ -69,7 +76,11 @@
       const targetKleur = event.target;
       if(targetKleur.nodeName == "INPUT"){
         kleur = targetKleur.value;
-        image.src = `images/${targetKleur.value}.png`;
+        shirtInfo.style.background = `url(images/${targetKleur.value}.png)`;
+        shirtInfo.style.background = `url(images/${kleur}.png)`;
+        shirtInfo.style.backgroundSize = "contain";
+        shirtInfo.style.backgroundRepeat = "no-repeat";   
+        shirtInfo.style.backgroundPosition = "center";   
       }
     })
   });
@@ -101,6 +112,79 @@ tekstPos.forEach((pos)=>{
   })
 })
 
+shirtInfo.style.background = `url(images/${kleur}.png)`;
+shirtInfo.style.backgroundSize = "contain";
+shirtInfo.style.backgroundRepeat = "no-repeat";
+shirtInfo.style.backgroundPosition = "center"
+
+const upload = document.querySelector("#afbeelding");
+
+upload.addEventListener("change", (e)=>{
+  const input = event.target;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const dataURL = reader.result;
+    const output = document.querySelector("#output");
+    output.src = dataURL;
+    output.style.width = "50px";
+  }
+    reader.readAsDataURL(input.files[0]);
+});
+
+
+
+var dragged;
+
+  /* events fired on the draggable target */
+  document.addEventListener("drag", function( event ) {
+
+  }, false);
+
+  document.addEventListener("dragstart", function( event ) {
+      // store a ref. on the dragged elem
+      dragged = event.target;
+      // make it half transparent
+      event.target.style.opacity = .5;
+  }, false);
+
+  document.addEventListener("dragend", function( event ) {
+      // reset the transparency
+      event.target.style.opacity = "";
+  }, false);
+
+  /* events fired on the drop targets */
+  document.addEventListener("dragover", function( event ) {
+      // prevent default to allow drop
+      event.preventDefault();
+  }, false);
+
+  document.addEventListener("dragenter", function( event ) {
+      // highlight potential drop target when the draggable element enters it
+      if ( event.target.className == "drop" ) {
+          event.target.style.background = "#f1f1f1";
+      }
+
+  }, false);
+
+  document.addEventListener("dragleave", function( event ) {
+      // reset background of potential drop target when the draggable element leaves it
+      if ( event.target.className == "drop" ) {
+          event.target.style.background = "";
+      }
+
+  }, false);
+
+  document.addEventListener("drop", function( event ) {
+      // prevent default action (open as link for some elements)
+      event.preventDefault();
+      // move dragged elem to the selected drop target
+      if ( event.target.className == "drop" ) {
+          event.target.style.background = "";
+          dragged.parentNode.removeChild( dragged );
+          event.target.appendChild( dragged );
+      }
+    
+  }, false);
 
 </script>
 <%- include("../partials/footer")%>

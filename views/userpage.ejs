@@ -1,8 +1,8 @@
 <%- include("../partials/head")%>
-<%- include("../partials/header")%>
 <section class="userpage">
   <h1>Hi, <%= user.firstname%></h1>
   <a href="/new">Nieuw t-shirt ontwerpen!</a>
+  <%if(bestellingen !== "nope") {%>
   <% bestellingen.forEach(bestelling => { %>
     <% console.log(bestelling) %>
     <a href="/edit/<%- bestelling.id%>"> 
@@ -11,6 +11,12 @@
         <p style="font-family: <%= bestelling.font %>; color: <%= bestelling.fontColor %>"><%= bestelling.text%></p>
       </article>      
     </a>    
-  <%})%>  
+  <%})%>
+  
+  <%}else{%>
+    <article>
+      <em>Maak een design!</em>
+    </article>
+    <%}%>
 </section>
   <%- include("../partials/footer")%>
