@@ -36,6 +36,10 @@ Het hoofddoel van deze applicatie is om tekst op een t-shirt te krijgen, en deze
 * ontwerpen aanpassen
 * ontwerp printen
 
+##### Web Technologie
+* File API
+* Drag & Drop
+
 ##### Storage & Files
 * MongoDB
 
