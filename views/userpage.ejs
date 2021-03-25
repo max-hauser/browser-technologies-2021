@@ -1,7 +1,7 @@
 <%- include("../partials/head")%>
 <section class="userpage">
   <h1>Hi, <%= user.firstname%></h1>
-  <a href="/new">Nieuw t-shirt ontwerpen!</a>
+  <a href="/new-credentials">Nieuw t-shirt ontwerpen!</a>
   <%if(bestellingen !== "nope") {%>
   <% bestellingen.forEach(bestelling => { %>
     <% console.log(bestelling) %>
