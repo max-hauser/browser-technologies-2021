@@ -129,11 +129,13 @@ app
 })
 
 .post('/admin',upload.single('tshirt') ,function(req, res){
+  console.log(req.file)
+  console.log(req.body)
   db.collection('tshirts').insertOne({
     image: req.file ? req.file.filename : null,
     kleur: req.body.kleur,
-    type: req.body.type
-  }, res.render('admin'))
+    gender: req.body.gender
+  }, res.render('admin', {user: userInfo}))
 })
 
 .post('/register', async function(req, res){
@@ -277,7 +279,7 @@ function check_status(req, res){
 }
 
 function load_admin(req, res){
-  res.render('admin')
+  res.render('admin', {user: userInfo})
 }
 
 function load_home(req, res, next){
