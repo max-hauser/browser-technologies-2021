@@ -4,7 +4,7 @@ Robuuste, toegankelijke websites ontwerpen en maken …
 
 Het web is voor iedereen met een computer en een browser. In het vak Browser Technologies ga ik onderzoeken wat Progressive Enhancement is en hoe ik dit kan toepassen om goede, robuuste, toegankelijke websites te maken. Voor iedereen.
 
-![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/heroimage.png)
+![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/heroimage.png)
 
 ### live link
 
@@ -31,7 +31,7 @@ bouw je verder en maak je de ervaring beter en beter.
 
 #### Hoe heb ik het toegepast?
 
-![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/PE.png)
+![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/PE.png)
 
 ### Features
 
@@ -62,7 +62,7 @@ Het hoofddoel van deze applicatie is om tekst op een t-shirt te krijgen, en deze
 
 Als eerste heb ik een wireflow van de webapp gemaakt, om te kijken hoe de webapp in elkaar zal steken.
 
-![Wireflow van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/wireflow.png)
+![Wireflow van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/wireflow.png)
 
 
 
