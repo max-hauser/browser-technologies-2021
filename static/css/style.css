@@ -241,6 +241,17 @@ article {
   width: 100%;
   text-align: center;
 }
+
+th {
+  display: block;
+  text-align: left;
+}
+
+td {
+  display: block;
+  text-align: left;
+}
+
 }
 
 @supports (display: grid) {
@@ -381,3 +392,24 @@ span.shirtInfo div{
   margin: 0px auto;
 }
 
+
+noscript + section {margin: 15px;background-color: #fff;padding: 15px;box-shadow: 0px 20px 20px #d0d0d0;border: 1px solid #d0d0d0;}
+
+noscript + section form {
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    min-width: auto;
+    max-width: initial;
+    display: inline-block;
+}
+
+noscript + section button {
+    background-color: #fdf851;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    display: inline-block;
+}

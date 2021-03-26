@@ -151,7 +151,18 @@ app
       postal: req.body.postal,
       street: req.body.street,
       housenumber: req.body.housenumber   
-    }, res.redirect('/register'))    
+    }),      
+    req.session.user = {
+      firstname: req.body.fname,
+      email: req.body.email,
+      gender: req.body.gender,
+      land: req.body.land,
+      city: req.body.city,
+      postal: req.body.postal,
+      street: req.body.street,
+      housenumber: req.body.housenumber
+    },
+    res.redirect('/userpage')
   }
 })
 
