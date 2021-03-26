@@ -393,7 +393,13 @@ span.shirtInfo div{
 }
 
 
-noscript + section {margin: 15px;background-color: #fff;padding: 15px;box-shadow: 0px 20px 20px #d0d0d0;border: 1px solid #d0d0d0;}
+noscript + section {
+  margin: 15px;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0px 20px 20px #d0d0d0;
+  border: 1px solid #d0d0d0;
+}
 
 noscript + section form {
     background: transparent;
