@@ -50,7 +50,7 @@
 </form>
 
 <script>
-  let kleur = "wit";
+  let kleur = "wit-m";
   const form = document.querySelector('main form'); 
   const main = document.querySelector('main'); 
   const viewer = `
@@ -76,8 +76,8 @@
       const targetKleur = event.target;
       if(targetKleur.nodeName == "INPUT"){
         kleur = targetKleur.value;
-        shirtInfo.style.background = `url(images/${targetKleur.value}.png)`;
-        shirtInfo.style.background = `url(images/${kleur}.png)`;
+        shirtInfo.style.background = `url(images/${targetKleur.value}-m.png)`;
+        shirtInfo.style.background = `url(images/${kleur}-m.png)`;
         shirtInfo.style.backgroundSize = "contain";
         shirtInfo.style.backgroundRepeat = "no-repeat";   
         shirtInfo.style.backgroundPosition = "center";   
