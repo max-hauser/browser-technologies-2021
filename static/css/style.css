@@ -278,16 +278,22 @@ td {
   border: 1px solid #000;
 }
 
-.textColor label > input,
-.shirtColor label > input{
-  visibility: hidden;
-}
-
-.textColor label + input,
-.shirtColor label + input {
-  visibility: hidden;
+.textColor input,
+.shirtColor input {
   z-index: -1;
   position: absolute;
+}
+
+.textColor input + label,
+.shirtColor input + label {
+  opacity: 0.1;
+}
+
+.textColor input:focus + label,
+.shirtColor input:focus + label,
+.textColor input:checked + label,
+.shirtColor input:checked + label {
+  opacity: 1;
 }
 
 .textColor li:nth-child(1) label,
@@ -313,9 +319,17 @@ background: linear-gradient(180deg, green 60%, white 40%);
 }
 
 .gender input{
-  visibility: hidden;
   z-index: -1;
   position: absolute;
+}
+
+.gender input:focus + label, .gender input:checked + label{
+  border: 1px solid #984923;
+  padding: 0px 10px;
+  border-radius: 10px;
+  min-height: 40px;
+  display: inline-block;
+  background-color: #80e6ad;
 }
 
 .gender p{
