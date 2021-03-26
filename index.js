@@ -32,7 +32,6 @@ app
 .get('/', check_session, check_status)
 .get('/viewOrder', check_session, load_viewOrder)
 .get('/admin', check_session, load_admin)
-.get('/new', check_session, load_new)
 .get('/home', check_session, load_home) 
 .get('/register', check_session, load_register)
 .get('/login', check_session, load_login)
@@ -135,54 +134,6 @@ app
     kleur: req.body.kleur,
     type: req.body.type
   }, res.render('admin'))
-})
-
-.post('/viewOrder', function(req, res){
-  console.log(req.session)
-  if(req.body.fname == undefined){ req.body.fname = req.session.user.firstname;}
-  if(req.body.email == undefined){ req.body.email = req.session.user.email;}
-  db.collection('bestelling').insertOne({
-    firstname: req.body.fname,
-    email: req.body.email,
-    gender: req.body.gender,
-    size: req.body.size,
-    color: req.body.color,
-    text: req.body.text,
-    font: req.body.font,
-    fontColor: req.body.fontColor,
-    pos: req.body.pos,
-    land: req.body.land,
-    city: req.body.city,
-    postal: req.body.postal,
-    street: req.body.street,
-    housenumber: req.body.housenumber,
-    image: req.file ? req.file.filename : null
-  }, viewOrder)
-
-  function viewOrder(err, data){
-    if(err){
-      console.log(err)
-    }else{
-      req.session.bestelling = {
-        firstname: req.body.fname,
-        email: req.body.email,
-        gender: req.body.gender,
-        size: req.body.size,
-        color: req.body.color,
-        text: req.body.text,
-        font: req.body.font,
-        fontColor: req.body.fontColor,
-        pos: req.body.pos,
-        land: req.body.land,
-        city: req.body.city,
-        postal: req.body.postal,
-        street: req.body.street,
-        housenumber: req.body.housenumber,
-        image: req.file ? req.file.filename : null
-      }
-      res.redirect('/viewOrder')
-    }
-  }
 })
 
 .post('/register', async function(req, res){
@@ -316,14 +267,6 @@ function check_status(req, res){
 
 function load_admin(req, res){
   res.render('admin')
-}
-
-function load_new(req, res){
-  if(req.session.user){
-    res.render('new', {user: req.session.user})
-  }else{
-    res.render('new',{user: userInfo})
-  }
 }
 
 function load_home(req, res, next){
