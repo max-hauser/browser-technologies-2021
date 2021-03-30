@@ -31,7 +31,7 @@ bouw je verder en maak je de ervaring beter en beter.
 
 #### Hoe heb ik het toegepast?
 
-![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/PE.png)
+![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/nieuw-PE.png)
 
 ### Features
 
