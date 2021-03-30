@@ -66,20 +66,6 @@ header form fieldset input{
   margin-bottom: 10px;
 }
 
-/* header fieldset input[type="submit"]{
-  background-color: blue;
-  padding: 5px 10px;
-  margin-top: 10px;
-  display: inline-block;
-} */
-
-/* button.cancel {
-  background-color: #e8e8e8;
-  border: none;
-  padding: 9px 8px;
-  border-radius: 5px;
-} */
-
 main.overview{
   background: radial-gradient(#f1f1f1 60%, transparent 60%);
   background-size: 500px 500px;
@@ -204,39 +190,6 @@ section.instellingen fieldset {
   color: #fff;
 }
 
-/* section.instellingen fieldset select{
-  width: 80px;
-}
-
-section.instellingen fieldset select option{
-  background-color: #632020;
-  color: #fff;
-} */
-
-/* fieldset + input[type="submit"] {
-  text-align: center;
-  min-width: 80px;
-  display: block;
-  margin: 20px auto;
-  background-color: #58b300;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 1em;
-  font-weight: bold;
-  box-shadow: 0px 3px 8px black;
-} */
-
-/* fieldset input[type="submit"] {
-  background: brown;
-  border: none;
-  padding: 5px 15px;
-  border-radius: 5px;
-  font-size: 1.2em;
-  color: #fff;
-} */
-
 section.instellingen fieldset:before {
   content: '';
   position: absolute;
@@ -246,22 +199,6 @@ section.instellingen fieldset:before {
   border: 2px solid #e89f32;
   padding: 7px;
 }
-
-
-/* label[for="afbeelding"] {
-  background-color: brown;
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-} */
-
-/* section.instellingen select {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid;
-  margin-bottom: 5px;
-  color: #fff;
-} */
 
 label[for="afbeelding"] p {
   margin: 0px;
@@ -327,12 +264,6 @@ section.detail section picture img{
   right: 0;
 }
 
-/* section.detail section picture img:nth-child(1){
-  max-width: 50px;
-  z-index: 2;
-  margin-top: 20%;
-} */
-
 .detail section {
   background-color: #fff;
   border-radius: 15px;
@@ -347,18 +278,6 @@ section.detail form {
   right: 5%;
   position: absolute;
 }
-
-/* section.detail input[type="submit"] {
-  width: 100%;
-  background-color: yellowgreen;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  border-radius: 10px;
-  color: #fff;
-  box-shadow: 0px 0px 5px #000;
-  margin-bottom: 5px;
-} */
 
 article.checkout {
   background-color: #fff;
@@ -377,14 +296,6 @@ article.checkout ul{
   padding: 0px;
 }
 
-/* .checkout section img{
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
 .checkout section img{
   max-width: 150px;
 }
@@ -397,16 +308,6 @@ article.checkout ul{
   max-width: unset;
   min-width: unset;
 }
-
-/* .checkout section img:first-child {
-  max-width: 50px;
-  z-index: 2;
-  margin-top: 30%;
-}
-
-.checkout section img:last-child {
-  max-width: 300px;
-} */
 
 main section.orders{
   background-color: lightblue;
@@ -494,15 +395,6 @@ form[action="/edit"]{
   form[action="/edit"] ul li{
     display: inline-block;
   }
-  
-
-
-
-
-
-
-
-
 
 .btn {
   background-color: #58b32d;

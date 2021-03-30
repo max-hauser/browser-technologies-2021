@@ -208,7 +208,7 @@ app
     street: req.body.street,
     housenumber: req.body.housenumber      
   }, () => {
-    res.render('checkout', {img: shirt,user: req.session.userInfo})
+    res.render('checkout', {img: shirt,user: req.session.userInfo, error: ''})
   })
 })
 
