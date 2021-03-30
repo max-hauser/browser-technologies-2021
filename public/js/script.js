@@ -11,7 +11,6 @@ if ('serviceWorker' in navigator) {
   // automatische update van het t-shirt design
 
   const url = window.location.hash;
-  console.log('url:', url.length);
 
   // inputs
   const gender = document.querySelector('#gender');
@@ -25,7 +24,9 @@ if ('serviceWorker' in navigator) {
   const fontColor = document.querySelector('#fontColor');
   const pos = document.querySelector('#pos');
   const textArea = document.querySelector('picture > article');
-  const cancel = document.querySelector('.cancel');
+  const cancel = document.querySelectorAll('.cancel');
+  const loginBtn = document.querySelector('label[for="inloggen"]');
+  const registerBtn = document.querySelector('label[for="registeren"]');
 
 if(url.length === 0){
 
@@ -40,6 +41,7 @@ if(url.length === 0){
   moveTextBtn.innerText = "x";
   pos.insertAdjacentElement('afterend', moveTextBtn)
   moveTextBtn.style.opacity = "0"
+  moveTextBtn.classList.add('btn');
 
 
   gender.addEventListener('change', (event) => {
@@ -98,7 +100,26 @@ if(url.length === 0){
   pos.addEventListener('change', ()=> {
     const pos = event.target.value;
     text.style.fontSize = pos + 'em';
-  })    
+  })  
+  
+  loginBtn.addEventListener('click', () => {
+    const loginForm = document.querySelector('form[action="/inloggen"]');
+    if(loginForm.style.opacity == '0'){
+      loginForm.style.opacity = "1";
+    }else{
+      loginForm.style.opacity = "0";
+    }
+  })
+
+  registerBtn.addEventListener('click', () => {
+    const registerForm = document.querySelector('form[action="/register"]');
+    console.log(registerForm)
+    if(registerForm.style.opacity == "0"){
+      registerForm.style.opacity = "1";
+    }else{
+      registerForm.style.opacity = "0";
+    }
+  })
 
 
   const upload = document.querySelector("#afbeelding");
@@ -166,13 +187,21 @@ if(url.length === 0){
     
   }, false);  
 
-  cancel.addEventListener('click', (event) => {
-    event.preventDefault();
-    const form = event.target.closest('form');
-    form.style.opacity = "0";
-    const radioBtns = document.querySelectorAll('header input[type="radio"]');
-    radioBtns.forEach((btn) => {
-      btn.checked = false;
+  cancel.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
+      console.log('close is clicked')
+      const form = event.target.closest('form');
+      if(form.style.opacity !== 0){
+        form.style.opacity = 0;
+      }
+      // form.style.opacity = "0";
+      // const radioBtns = document.querySelectorAll('header input[type="radio"]');
+      // radioBtns.forEach((btn) => {
+      //   if(btn.checked == true){
+      //     btn.checked = false;
+      //   }
+      // })
     })
   })
 

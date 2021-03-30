@@ -2,22 +2,22 @@
 <form action="/" method="post" enctype="multipart/form-data">
 
   <section class="t-shirt">
-    <h2>t-shirt</h2>
+    <h2>T-shirt</h2>
     <fieldset>
-      <legend>voorbeeld</legend>
+      <legend>Voorbeeld</legend>
       <picture>
         <div class="dropzone">
           <div class="drop">
             <article draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
               <label for="text" class="label">Tekst</label><br>
-              <input type="text" name="text" id="text" required placeholder="jouw tekst hier" value="<%= user.text %>"
+              <input type="text" name="text" id="text" required placeholder="Jouw tekst hier" value="<%= user.text %>"
                 style="color: <%= user.fontColor%>; font-family: <%= user.font%>; font-size: <%= user.pos %>em"
                 autocomplete="off"><br>
               <label for="font" class="label">Lettertype</label>
               <select name="font" id="font">
                 <option value="" disabled selected>Lettertype</option>
                 <option value="sans-serif" <%= user.font == 'sans-serif' ? 'selected' : '' %>>Sans-serif</option>
-                <option value="serif" <%= user.font == 'serif' ? 'selected' : '' %>>serif</option>
+                <option value="serif" <%= user.font == 'serif' ? 'selected' : '' %>>Serif</option>
                 <option value="arial" <%= user.font == 'arial' ? 'selected' : '' %>>Arial</option>
               </select>
               <label for="fontColor" class="label">Tekstkleur</label>
@@ -28,7 +28,7 @@
               </select>
               <label for="pos" class="label">Positie</label>
               <select name="pos" id="pos">
-                <option value="" disabled selected>letter grootte</option>
+                <option value="" disabled selected>Letter grootte</option>
                 <option value="1" <%= user.pos == '1' ? 'selected' : '' %>>s</option>
                 <option value="2" <%= user.pos == '2' ? 'selected' : '' %>>m</option>
                 <option value="3" <%= user.pos == '3' ? 'selected' : '' %>>l</option>
@@ -47,11 +47,11 @@
   </section>
 
   <section class="instellingen">
-    <h2>instellingen</h2>
+    <h2>Instellingen</h2>
     <fieldset>
       <legend>T-shirt</legend>
       <label for="gender" class="label">Geslacht</label>
-      <select name="gender" id="gender">
+      <select name="gender" id="gender" required>
         <option value="" disabled selected>Gender</option>
         <option value="male" <%= user.gender == 'male' ? 'selected' : '' %>><span>&#129492;</span>
           <p>Man</p>
@@ -61,14 +61,14 @@
         </option>
       </select><br><br>
       <label for="size" class="label">Maat</label>
-      <select name="size" id="size">
+      <select name="size" id="size" required>
         <option value="" disabled selected>Maat</option>
         <option value="small" <%= user.size == 'small' ? 'selected' : '' %>>s</option>
         <option value="medium" <%= user.size == 'medium' ? 'selected' : '' %>>m</option>
         <option value="large" <%= user.size == 'large' ? 'selected' : '' %>>l</option>
       </select><br><br>
       <label for="color" class="label">T-shirt kleur</label>
-      <select name="color" id="color">
+      <select name="color" id="color" required>
         <option value="" disabled selected>Shirt kleur</option>
         <option value="zwart" <%= user.color == 'zwart' ? 'selected' : '' %>>Zwart</option>
         <option value="wit" <%= user.color == 'wit' ? 'selected' : '' %>>Wit</option>
@@ -76,11 +76,11 @@
         <option value="geel" <%= user.color == 'geel' ? 'selected' : '' %>>Geel</option>
         <option value="groen" <%= user.color == 'groen' ? 'selected' : '' %>>Groen</option>
       </select><br><br>
-      <label for="afbeelding">Afbeelding</label><br>
+      <label for="afbeelding"  class="btn" tabindex="0">Afbeelding</label><br>
       <input type="file" name="afbeelding" id="afbeelding" accept="image/*" id="afbeelding" style="display: none;">
-      <input type="submit" value="Update" name="actie">
+      <input type="submit" value="Update" name="actie"  class="btn">
+      <input type="submit" value="Bestellen" name="actie"  class="btn">
     </fieldset>
-    <input type="submit" value="Bestellen" name="actie">
   </section>
 </form>
 <%- include('partials/footer.ejs') %>

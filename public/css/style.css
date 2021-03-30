@@ -66,19 +66,19 @@ header form fieldset input{
   margin-bottom: 10px;
 }
 
-header fieldset input[type="submit"]{
-  display: inline-block;
+/* header fieldset input[type="submit"]{
   background-color: blue;
   padding: 5px 10px;
   margin-top: 10px;
-}
+  display: inline-block;
+} */
 
-button.cancel {
+/* button.cancel {
   background-color: #e8e8e8;
   border: none;
   padding: 9px 8px;
   border-radius: 5px;
-}
+} */
 
 main.overview{
   background: radial-gradient(#f1f1f1 60%, transparent 60%);
@@ -204,16 +204,16 @@ section.instellingen fieldset {
   color: #fff;
 }
 
-section.instellingen fieldset select{
+/* section.instellingen fieldset select{
   width: 80px;
 }
 
 section.instellingen fieldset select option{
   background-color: #632020;
   color: #fff;
-}
+} */
 
-fieldset + input[type="submit"] {
+/* fieldset + input[type="submit"] {
   text-align: center;
   min-width: 80px;
   display: block;
@@ -226,16 +226,16 @@ fieldset + input[type="submit"] {
   font-size: 1em;
   font-weight: bold;
   box-shadow: 0px 3px 8px black;
-}
+} */
 
-fieldset input[type="submit"] {
+/* fieldset input[type="submit"] {
   background: brown;
   border: none;
   padding: 5px 15px;
   border-radius: 5px;
   font-size: 1.2em;
   color: #fff;
-}
+} */
 
 section.instellingen fieldset:before {
   content: '';
@@ -248,20 +248,20 @@ section.instellingen fieldset:before {
 }
 
 
-label[for="afbeelding"] {
+/* label[for="afbeelding"] {
   background-color: brown;
   padding: 8px;
   margin-bottom: 10px;
   border-radius: 5px;
-}
+} */
 
-section.instellingen select {
+/* section.instellingen select {
   background: transparent;
   border: none;
   border-bottom: 1px solid;
   margin-bottom: 5px;
   color: #fff;
-}
+} */
 
 label[for="afbeelding"] p {
   margin: 0px;
@@ -327,11 +327,11 @@ section.detail section picture img{
   right: 0;
 }
 
-section.detail section picture img:nth-child(1){
+/* section.detail section picture img:nth-child(1){
   max-width: 50px;
   z-index: 2;
   margin-top: 20%;
-}
+} */
 
 .detail section {
   background-color: #fff;
@@ -348,7 +348,7 @@ section.detail form {
   position: absolute;
 }
 
-section.detail input[type="submit"] {
+/* section.detail input[type="submit"] {
   width: 100%;
   background-color: yellowgreen;
   border: none;
@@ -358,35 +358,47 @@ section.detail input[type="submit"] {
   color: #fff;
   box-shadow: 0px 0px 5px #000;
   margin-bottom: 5px;
-}
+} */
 
 article.checkout {
   background-color: #fff;
-  margin: 15px;
+  margin: 15px auto;
   padding: 15px;
   max-width: 800px;
-  margin: 0px auto;
   margin-bottom: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 1px #101010;
 }
 
-.checkout section img{
+article.checkout ul{
+  display: inline-block;
+  list-style-type: none;
+  margin: 0px 0px 15px 0px;
+  padding: 0px;
+}
+
+/* .checkout section img{
   position: absolute;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
+} */
+
+.checkout section img{
+  max-width: 150px;
 }
 
 .checkout section picture{
   position: relative;
-  min-width: 300px;
-  max-width: 500px;
-  min-height: 300px;
   margin: 0px;
   display: inline-block;
+  text-align: left;
+  max-width: unset;
+  min-width: unset;
 }
 
-.checkout section img:first-child {
+/* .checkout section img:first-child {
   max-width: 50px;
   z-index: 2;
   margin-top: 30%;
@@ -394,7 +406,7 @@ article.checkout {
 
 .checkout section img:last-child {
   max-width: 300px;
-}
+} */
 
 main section.orders{
   background-color: lightblue;
@@ -483,3 +495,76 @@ form[action="/edit"]{
     display: inline-block;
   }
   
+
+
+
+
+
+
+
+
+
+.btn {
+  background-color: #58b32d;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: 0.3s;
+  border: none;
+  font-size: 14px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover{
+  cursor: pointer;
+  background-color: #306318; 
+}
+
+.btn:focus, .btn:active{
+  background-color: #306318;
+  box-shadow: 1px 1px 1px #000 inset;
+}
+
+.btn.cancel{
+  background-color: #e8e8e8;
+  color: #101010;
+}
+
+.btn.cancel:hover{
+  cursor: pointer;
+  background-color: #cccccc;
+}
+
+.btn.cancel:focus, .btn.cancel:active{
+  background-color: #cccccc;
+  box-shadow: 1px 1px 1px #000 inset;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  border-radius: 5px;
+  border: 1px solid #1b1b1b;
+  padding: 5px;
+}
+
+select {
+  background: #fff;
+  border: 1px solid #1b1b1b;
+  border-radius: 5px;
+  padding: 5px;
+  min-width: 100px;
+}
+
+select option{
+  background: #fff;
+  color: #000;
+}
+
+.error {
+  background: red;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}

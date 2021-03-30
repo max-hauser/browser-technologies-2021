@@ -5,18 +5,18 @@
 
 <h2>Dit is wat je hebt besteld</h2>
 <section>
-    <h3>jouw design</h3>
+    <h3>Jouw design</h3>
     <picture>
-      <img src="images/uploads/<%= user.image%>" alt="uploaded image">
+      <%if(user.img !== undefined){%><img src="images/uploads/<%= user.image%>" alt="uploaded image"><%}%>
       <img src="images/uploads/<%=img.image%>" alt="t-shirt">
     </picture>
     <ul>
-      <li>gender: <%= user.gender%></li>
-      <li>size: <%= user.size%></li>
-      <li>shirt color: <%= user.color%></li>
-      <li>text: <%= user.text%></li>
-      <li>font: <%= user.font%></li>
-      <li>font color: <% if(user.fontColor == "#000000"){%>zwart<%}else{%>wit<%}%></li>
+      <li>Gender: <%= user.gender%></li>
+      <li>Maat: <%= user.size%></li>
+      <li>Shirtkleur: <%= user.color%></li>
+      <li>Tekst: <%= user.text%></li>
+      <li>Lettertype: <%= user.font%></li>
+      <li>Letterkleur: <% if(user.fontColor == "#000000"){%>zwart<%}else{%>wit<%}%></li>
     </ul>
   </section>
 
@@ -32,7 +32,7 @@
     </ul>
   </section>
 
-  <a href="/">Terug naar de homepagina</a>
+  <a href="/"  class="btn">Terug naar de homepagina</a>
 </article>
 
 <%- include('partials/footer.ejs') %> 

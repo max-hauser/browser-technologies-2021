@@ -5,25 +5,25 @@
 <section>
   <h2>voorbeeld</h2>
   <picture>
-    <img src="images/uploads/<%= user.image%>" alt="uploaded image">
-    <img src="images/uploads/<%=img.image%>" alt="t-shirt">
+    <%if(user.img !== undefined){%><img src="images/uploads/<%= user.image%>"><%}%>
+    <%if(img ){%><img src="images/uploads/<%=img.image%>" alt="t-shirt"><%}%>
   </picture>
   <ul>
-    <li>gender: <%= user.gender%></li>
-    <li>size: <%= user.size%></li>
-    <li>shirt color: <%= user.color%></li>
-    <li>text: <%= user.text%></li>
-    <li>font: <%= user.font%></li>
-    <li>font color: <%= user.fontColor%></li>
+    <li>Gender: <%= user.gender%></li>
+    <li>Maat: <%= user.size%></li>
+    <li>ShirtKleur: <%= user.color%></li>
+    <li>Tekst: <%= user.text%></li>
+    <li>Lettertype: <%= user.font%></li>
+    <li>Letterkleur: <% if(user.fontColor == "#000000"){%>zwart<%}else{%>wit<%}%></li>
   </ul>
 </section>
 
 <form action="/details" method="post">
 
   <section class="persoonlijkeGegevens">
-    <h2>persoonlijke Gegevens</h2>
+    <h2>Persoonlijke Gegevens</h2>
     <fieldset>
-      <legend>persoonlijke gegevens</legend>
+      <legend>Persoonlijke gegevens</legend>
       <label for="naam">Naam</label><br>
       <input type="text" name="naam" id="naam" placeholder="naam" value="<%= user.firstname %>"><br><br>
       <label for="email">E-mail</label><br>
@@ -32,7 +32,7 @@
   </section>
 
   <section class="bezorging">
-      <h2>bezorging</h2>
+      <h2>Bezorging</h2>
         <fieldset class="bezorgadres">
             <legend>Bezorgadres</legend>
             <label for="land" >Land</label><br>
@@ -49,7 +49,7 @@
           <br>
     </section>
 
-    <input type="submit" value="Bestellen">
+    <input type="submit" value="Bestellen"  class="btn">
 </form>
 </section>
 <%- include('partials/footer.ejs') %> 

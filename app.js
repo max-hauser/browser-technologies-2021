@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3003;
 const session = require('express-session');
 const url = require('url'); 
 const mongo = require('mongodb');
@@ -10,6 +10,7 @@ const MemoryStore = require('memorystore')(session)
 require('dotenv').config()
 const multer = require('multer')
 const upload = multer({dest: 'public/images/uploads/'})
+let fallBackUser;
 
 let db;
 const db_key = process.env.URI;
@@ -29,18 +30,19 @@ app
 
 .get('/', async function(req, res){
   const shirt = await getShirt('male', 'wit');
-  res.render('index', {img: shirt, user: "guest"})
+  res.render('index', {img: shirt, user: "guest", error: ""})
 })
 
 .get('/details', function(req, res){
-	res.render('details', {user: 'guest'});
+	res.render('details', {user: ''});
 })
 
 .get('/offline', function(req, res){
-	res.render('offline', {user: 'guest'});
+	res.render('offline', {user: 'guest', error: ''});
 })
 
 .get('/logout', function(req, res){
+  console.log('de gebruiker wil uitloggen!!!')
   console.log(req.session)
   res.redirect('/');
 })
@@ -88,7 +90,7 @@ app
 
 .get('/register', function(req, res){
   console.log('get register')
-  res.render('/', {user: req.session.userInfo})
+  res.render('/', {user: req.session.userInfo, error: ''})
 })
 
 .post('/register', async function(req, res){
@@ -163,9 +165,9 @@ app
     housenumber: req.body.housenumber
   }
   if(req.body.actie == "Update"){
-  res.render('index', {img: shirt, user: req.session.userInfo})
+  res.render('index', {img: shirt, user: req.session.userInfo, error: ''})
   }else if(req.body.actie == "Bestellen"){
-    res.render('details', {img: shirt, user: req.session.userInfo})
+    res.render('details', {img: shirt, user: req.session.userInfo, error: ''})
   }
 })
 
@@ -244,8 +246,16 @@ app
           street: session_street.toString(),
           housenumber: session_housenumber.toString()
         }
+        if(req.session.userInfo){
+          fallBackUser = req.session.userInfo;
+        }else{
+          fallBackUser = {firstname: "guest"}
+        }
         console.log(req.session.userInfo)
-        res.render('index', {img: shirt, user: req.session.userInfo})
+        res.render('index', {img: shirt, user: fallBackUser, error: ""})
+      }else{
+        console.log(fallBackUser)
+        res.render('index', {img: shirt, user: {firstname: 'guest'}, error : "fout bij inloggen"})
       }
     }
   }
