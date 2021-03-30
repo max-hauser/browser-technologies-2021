@@ -208,6 +208,11 @@ section.instellingen fieldset select{
   width: 80px;
 }
 
+section.instellingen fieldset select option{
+  background-color: #632020;
+  color: #fff;
+}
+
 fieldset + input[type="submit"] {
   text-align: center;
   min-width: 80px;
