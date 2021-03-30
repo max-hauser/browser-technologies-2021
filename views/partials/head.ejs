@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/style.css">
+	<link rel="shortcut icon" href="/images/favicon.ico" />
+	<title>t-shirt shine</title>
+	<link rel="manifest" type="application/manifest+json" href="/manifest/manifest.webmanifest" crossorigin="use-credentials">
+  <meta name="theme-color" content="#000000">
+  <link rel="apple-touch-icon" href="/images/favicon.ico">
+  <script src="/js/script.js" defer></script>
+  <meta name="description" content="Kunstkijken webapp">
+  <meta name="keywords" content="webapp, node, serverside">	
+</head>
+<body>
+<header>
+  <a href="/"><img src="/images/logo.png" alt="t-shirt shine"></a>
+
+<% if(user !== 'guest' && user.firstname !== undefined){%>
+  <% console.log( 'order user:', user) %> 
+  <a href="orders">Mijn bestellingen</a>
+  <a href="logout">Uitloggen</a>
+<%}else{%>
+    <label for="inloggen">Inloggen</label>
+    <input type="radio" name="account" value="inloggen" id="inloggen">
+
+    <label for="registeren">Registeren</label>
+    <input type="radio" name="account" value="registeren" id="registeren">
+  
+  <form action="/inloggen" method="post" name="inlogform">
+    <fieldset>
+      <legend>Inloggen</legend>
+    <input type="email" name="email" id="email" placeholder="email">
+    <input type="password" name="password" id="password" placeholder="wachtwoord">
+    <input type="submit" value="inloggen" name="inloggen">
+    <button class="cancel">cancel</button>
+  </fieldset>
+  </form>
+  <form action="/register" method="post" name="registerform">
+    <fieldset>
+      <legend>registeren</legend>
+    
+    <input type="text" name="firstname" id="firstname" placeholder="naam">
+    <input type="radio" name="gender" id="gender-m" placeholder="gender" value="male">male<br>
+    <input type="radio" name="gender" id="gender-f" placeholder="gender" value="female">female<br>
+    <input type="email" name="email" id="reg_email" placeholder="email">
+    <input type="password" name="password" id="reg_password" placeholder="wachtwoord">
+
+    <input type="text" name="land" id="land" placeholder="land">
+    <input type="text" name="city" id="city" placeholder="plaats">
+    <input type="postal" name="postal" id="postal" placeholder="postcode">
+    <input type="street" name="street" id="street" placeholder="straat">
+    <input type="housenumber" name="housenumber" id="housenumber" placeholder="huisnummer">
+
+    <input type="submit" value="register" name="register">
+    <button class="cancel">cancel</button>
+  </fieldset>
+  </form>
+  <%}%>  
+</header>
+<main class="overview">

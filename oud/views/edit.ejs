@@ -1,5 +1,6 @@
-<%- include('partials/head.ejs') %> 
-<form action="/edit" method="post">
+<%- include("../partials/head")%>
+    <% console.log(bestelling) %>
+  <form action="/edit" method="post">
   <fieldset>
       <legend>T-shirt</legend>
       <label for="">Geslacht</label>      
@@ -49,4 +50,4 @@
     <input type="submit" value="Bewerken" name="send">
   </fieldset>
   </form>
-  <%- include('partials/footer.ejs') %> 
+  <%- include("../partials/footer")%>

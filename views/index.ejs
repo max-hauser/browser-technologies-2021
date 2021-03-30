@@ -1,0 +1,86 @@
+<%- include('partials/head.ejs') %>
+<form action="/" method="post" enctype="multipart/form-data">
+
+  <section class="t-shirt">
+    <h2>t-shirt</h2>
+    <fieldset>
+      <legend>voorbeeld</legend>
+      <picture>
+        <div class="dropzone">
+          <div class="drop">
+            <article draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+              <label for="text" class="label">Tekst</label><br>
+              <input type="text" name="text" id="text" required placeholder="jouw tekst hier" value="<%= user.text %>"
+                style="color: <%= user.fontColor%>; font-family: <%= user.font%>; font-size: <%= user.pos %>em"
+                autocomplete="off"><br>
+              <label for="font" class="label">Lettertype</label>
+              <select name="font" id="font">
+                <option value="" disabled selected>Lettertype</option>
+                <option value="sans-serif" <%= user.font == 'sans-serif' ? 'selected' : '' %>>Sans-serif</option>
+                <option value="serif" <%= user.font == 'serif' ? 'selected' : '' %>>serif</option>
+                <option value="arial" <%= user.font == 'arial' ? 'selected' : '' %>>Arial</option>
+              </select>
+              <label for="fontColor" class="label">Tekstkleur</label>
+              <select name="fontColor" id="fontColor">
+                <option value="" disabled selected>tekstkleur</option>
+                <option value="#000000" <%= user.fontColor == '#000000' ? 'selected' : '' %>>Zwart</option>
+                <option value="#ffffff" <%= user.fontColor == '#ffffff' ? 'selected' : '' %>>Wit</option>
+              </select>
+              <label for="pos" class="label">Positie</label>
+              <select name="pos" id="pos">
+                <option value="" disabled selected>letter grootte</option>
+                <option value="1" <%= user.pos == '1' ? 'selected' : '' %>>s</option>
+                <option value="2" <%= user.pos == '2' ? 'selected' : '' %>>m</option>
+                <option value="3" <%= user.pos == '3' ? 'selected' : '' %>>l</option>
+              </select>
+            </article>
+          </div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+        </div>
+        <div class="uploadWrap" ondragstart="event.dataTransfer.setData('text/plain',null)">
+          <img src="images/uploads/<%= user.image %>" alt="" class="uploaded">
+        </div>
+        <img src="images/uploads/<%=img.image%>" class="t-shirt" alt="t-shirt" style="width: 100%;">
+      </picture>
+    </fieldset>
+  </section>
+
+  <section class="instellingen">
+    <h2>instellingen</h2>
+    <fieldset>
+      <legend>T-shirt</legend>
+      <label for="gender" class="label">Geslacht</label>
+      <select name="gender" id="gender">
+        <option value="" disabled selected>Gender</option>
+        <option value="male" <%= user.gender == 'male' ? 'selected' : '' %>><span>&#129492;</span>
+          <p>Man</p>
+        </option>
+        <option value="female" <%= user.gender == 'female' ? 'selected' : '' %>><span>&#129489;</span>
+          <p>Vrouw</p>
+        </option>
+      </select><br><br>
+      <label for="size" class="label">Maat</label>
+      <select name="size" id="size">
+        <option value="" disabled selected>Maat</option>
+        <option value="small" <%= user.size == 'small' ? 'selected' : '' %>>s</option>
+        <option value="medium" <%= user.size == 'medium' ? 'selected' : '' %>>m</option>
+        <option value="large" <%= user.size == 'large' ? 'selected' : '' %>>l</option>
+      </select><br><br>
+      <label for="color" class="label">T-shirt kleur</label>
+      <select name="color" id="color">
+        <option value="" disabled selected>Shirt kleur</option>
+        <option value="zwart" <%= user.color == 'zwart' ? 'selected' : '' %>>Zwart</option>
+        <option value="wit" <%= user.color == 'wit' ? 'selected' : '' %>>Wit</option>
+        <option value="rood" <%= user.color == 'rood' ? 'selected' : '' %>>Rood</option>
+        <option value="geel" <%= user.color == 'geel' ? 'selected' : '' %>>Geel</option>
+        <option value="groen" <%= user.color == 'groen' ? 'selected' : '' %>>Groen</option>
+      </select><br><br>
+      <label for="afbeelding">Afbeelding</label><br>
+      <input type="file" name="afbeelding" id="afbeelding" accept="image/*" id="afbeelding" style="display: none;">
+      <input type="submit" value="Update" name="actie">
+    </fieldset>
+    <input type="submit" value="Bestellen" name="actie">
+  </section>
+</form>
+<%- include('partials/footer.ejs') %>

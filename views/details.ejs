@@ -1,0 +1,55 @@
+<%- include('partials/head.ejs') %>
+<section class="detail">
+<h1>Jouw bestelling</h1> 
+
+<section>
+  <h2>voorbeeld</h2>
+  <picture>
+    <img src="images/uploads/<%= user.image%>" alt="uploaded image">
+    <img src="images/uploads/<%=img.image%>" alt="t-shirt">
+  </picture>
+  <ul>
+    <li>gender: <%= user.gender%></li>
+    <li>size: <%= user.size%></li>
+    <li>shirt color: <%= user.color%></li>
+    <li>text: <%= user.text%></li>
+    <li>font: <%= user.font%></li>
+    <li>font color: <%= user.fontColor%></li>
+  </ul>
+</section>
+
+<form action="/details" method="post">
+
+  <section class="persoonlijkeGegevens">
+    <h2>persoonlijke Gegevens</h2>
+    <fieldset>
+      <legend>persoonlijke gegevens</legend>
+      <label for="naam">Naam</label><br>
+      <input type="text" name="naam" id="naam" placeholder="naam" value="<%= user.firstname %>"><br><br>
+      <label for="email">E-mail</label><br>
+      <input type="email" name="email" id="email" placeholder="email" value="<%= user.email %>">
+    </fieldset>    
+  </section>
+
+  <section class="bezorging">
+      <h2>bezorging</h2>
+        <fieldset class="bezorgadres">
+            <legend>Bezorgadres</legend>
+            <label for="land" >Land</label><br>
+            <input type="text" name="land" id="land"  value="<%= user.land %>"><br><br>
+            <label for="city">Plaatsnaam</label><br>
+            <input type="text" name="city" id="city"  value="<%= user.city %>"><br><br>
+            <label for="postal">Postcode</label><br>
+            <input type="text" name="postal" id="postal"  value="<%= user.postal %>"><br><br>
+            <label for="street">Straatnaam</label><br>
+            <input type="text" name="street" id="street"  value="<%= user.street %>"><br><br>
+            <label for="housenumber">Huisnummer + toevoeging</label><br>
+            <input type="text" name="housenumber" id="housenumber"  value="<%= user.housenumber %>">   
+          </fieldset>
+          <br>
+    </section>
+
+    <input type="submit" value="Bestellen">
+</form>
+</section>
+<%- include('partials/footer.ejs') %> 

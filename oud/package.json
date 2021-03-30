@@ -1,0 +1,31 @@
+{
+  "name": "browser-technologies-2021",
+  "version": "1.0.0",
+  "description": "Robuuste, toegankelijke websites ontwerpen en maken …",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max-hauser/browser-technologies-2021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/max-hauser/browser-technologies-2021/issues"
+  },
+  "homepage": "https://github.com/max-hauser/browser-technologies-2021#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "memorystore": "^1.6.5",
+    "mongodb": "^3.6.5",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.7"
+  }
+}

@@ -1,0 +1,21 @@
+<%- include('partials/head.ejs') %> 
+<section class="orders">
+<h1>Mijn bestellingen</h1>
+<%if(bestellingen !== "nope") {%>
+  <% bestellingen.forEach(bestelling => { %>
+    <% console.log(bestelling) %>
+    <a href="/edit/<%- bestelling.id%>"> 
+      <article>
+        <img src="images/uploads/<%= bestelling.image%>" style="width: 150px" alt="t-shirt">
+        <p style="font-family: <%= bestelling.font %>; color: <%= bestelling.fontColor %>"><%= bestelling.text%></p>
+      </article>      
+    </a>    
+  <%})%>
+  
+  <%}else{%>
+    <article>
+      <em>Maak een design!</em>
+    </article>
+    <%}%>
+</section>
+<%- include('partials/footer.ejs') %> 

@@ -1,0 +1,38 @@
+<%- include('partials/head.ejs') %> 
+<article class="checkout">
+<h1>Bedankt voor je bestelling!</h1>
+<p>We gaan direct voor je aan de slag</p>
+
+<h2>Dit is wat je hebt besteld</h2>
+<section>
+    <h3>jouw design</h3>
+    <picture>
+      <img src="images/uploads/<%= user.image%>" alt="uploaded image">
+      <img src="images/uploads/<%=img.image%>" alt="t-shirt">
+    </picture>
+    <ul>
+      <li>gender: <%= user.gender%></li>
+      <li>size: <%= user.size%></li>
+      <li>shirt color: <%= user.color%></li>
+      <li>text: <%= user.text%></li>
+      <li>font: <%= user.font%></li>
+      <li>font color: <% if(user.fontColor == "#000000"){%>zwart<%}else{%>wit<%}%></li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Jouw gegevens</h3>
+    <ul>
+      <li>Naam: <%= user.firstname%></li>
+      <li>Email: <%= user.email%></li>
+    </ul>
+    <h3>Het bezorgadres</h3>
+    <ul>
+      <li><%= user.street%> <%= user.housenumber%>, <%= user.city%>, <%= user.land%></li>
+    </ul>
+  </section>
+
+  <a href="/">Terug naar de homepagina</a>
+</article>
+
+<%- include('partials/footer.ejs') %> 

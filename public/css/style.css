@@ -1,0 +1,480 @@
+body{
+  margin: 0;
+  background-color: lightblue;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+header{
+  padding: 15px;
+  text-align: right;
+}
+
+header a{
+  color: black;
+  text-decoration: none;
+}
+
+header a:first-child {
+  position: absolute;
+  left: 15px;
+}
+
+header form {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+header input[value="inloggen"],
+header input[value="registeren"]{
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+header input[value="inloggen"]:checked ~ form[action="/inloggen"]{
+  opacity: 1;
+  z-index: 5;
+}
+header input[value="registeren"]:checked ~ form[action="/register"]{
+  opacity: 1;
+  z-index: 5;
+}
+
+header input[value="inloggen"]:checked ~ form[action="/inloggen"] input[type="submit"] {
+  position: static;
+  opacity: 1;
+}
+
+header form {
+  background-color: #fff;
+  margin-left: calc(100% - 250px);
+  width: 200px;
+  margin-top: 50px;
+  z-index: -1;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0px 0px 5px
+}
+
+header form fieldset{
+  border: 0px;
+}
+
+header form fieldset input{
+  margin-bottom: 10px;
+}
+
+header fieldset input[type="submit"]{
+  display: inline-block;
+  background-color: blue;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+button.cancel {
+  background-color: #e8e8e8;
+  border: none;
+  padding: 9px 8px;
+  border-radius: 5px;
+}
+
+main.overview{
+  background: radial-gradient(#f1f1f1 60%, transparent 60%);
+  background-size: 500px 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: circle 0.3s linear forwards;
+}
+
+
+@keyframes circle{
+  from{
+    background-size: 0px 0px;
+  }to{
+    background-size: 500px 500px;
+  }
+}
+
+
+picture {
+  position: relative;
+  display: block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-align: center;
+  background-size: 45% 100%;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 0px auto;
+  opacity: 0;
+  animation: tshirt 0.3s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes tshirt{
+  from{
+    opacity: 0;
+  }to{
+    opacity: 1;
+  }
+}
+
+picture input#text {
+  border: none;
+  background: transparent;
+  font-size: 1.2em;
+  text-align: center;
+  width: 100%;
+}
+
+picture input#text:focus ~ select{
+  opacity: 1;
+}
+
+picture article {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  display: block;
+  max-width: 250px;
+  z-index: 2;
+}
+
+picture article select{
+  opacity: 0;
+}
+
+picture input#text:focus ~ select {
+  opacity: 1;
+}
+
+picture img{
+  max-width: 600px;
+}
+
+picture label{
+  display: none
+}
+
+section{
+  margin: 0px;
+  padding: 0px;
+}
+
+section h2{
+  display: none;
+}
+
+section fieldset{
+  border: none;
+}
+
+section fieldset legend{
+  display: none;
+}
+
+section.instellingen {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+}
+
+section.instellingen .label,
+section.instellingen br{
+  display: none;
+}
+
+section.instellingen fieldset {
+  box-shadow: 0px 0px 5px #000;
+  border-radius: 10px;
+  display: flex;
+  width: auto;
+  overflow-x: scroll;
+  max-width: 492px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px 34px;
+  margin: 0px auto;
+  background-color: #631f1f;
+  flex-direction: column;
+  border: 4px dashed #e89f32;
+  color: #fff;
+}
+
+section.instellingen fieldset select{
+  width: 80px;
+}
+
+fieldset + input[type="submit"] {
+  text-align: center;
+  min-width: 80px;
+  display: block;
+  margin: 20px auto;
+  background-color: #58b300;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  box-shadow: 0px 3px 8px black;
+}
+
+fieldset input[type="submit"] {
+  background: brown;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+section.instellingen fieldset:before {
+  content: '';
+  position: absolute;
+  background-color: lightblue;
+  border-radius: 100%;
+  top: 10px;
+  border: 2px solid #e89f32;
+  padding: 7px;
+}
+
+
+label[for="afbeelding"] {
+  background-color: brown;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+section.instellingen select {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+label[for="afbeelding"] p {
+  margin: 0px;
+  font-size: 3em;
+}
+
+.uploaded{
+  position: absolute;
+  max-width: 100px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+
+============================================================================================================
+Detail page
+============================================================================================================
+
+*/
+
+section.detail picture {
+  width: 300px;
+  height: 150px;
+  position: relative;
+}
+
+section.detail{
+  background-color: lightblue;
+  padding: 15px;
+}
+
+
+section.detail ul,
+section.detail section picture {
+  display: inline-block;
+}
+
+section.detail > section {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #333;
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+section.detail ul{
+  margin: 0px;
+  padding: 0px;
+  vertical-align: super;
+}
+
+section.detail section picture img{
+  width: 100%;
+  max-width: 150px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+section.detail section picture img:nth-child(1){
+  max-width: 50px;
+  z-index: 2;
+  margin-top: 20%;
+}
+
+.detail section {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px;
+  padding: 5px;
+  display: block;
+  margin-bottom: 25px;
+}
+
+section.detail form {
+  display: inline-block;
+  right: 5%;
+  position: absolute;
+}
+
+section.detail input[type="submit"] {
+  width: 100%;
+  background-color: yellowgreen;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0px 0px 5px #000;
+  margin-bottom: 5px;
+}
+
+article.checkout {
+  background-color: #fff;
+  margin: 15px;
+  padding: 15px;
+  max-width: 800px;
+  margin: 0px auto;
+  margin-bottom: 50px;
+}
+
+.checkout section img{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkout section picture{
+  position: relative;
+  min-width: 300px;
+  max-width: 500px;
+  min-height: 300px;
+  margin: 0px;
+  display: inline-block;
+}
+
+.checkout section img:first-child {
+  max-width: 50px;
+  z-index: 2;
+  margin-top: 30%;
+}
+
+.checkout section img:last-child {
+  max-width: 300px;
+}
+
+main section.orders{
+  background-color: lightblue;
+  padding: 15px;
+}
+
+main section.orders a {
+  display: inline-block;
+  background: #fff;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px;
+}
+
+.dropzone {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropzone  .drop{
+  width: 100%;
+  height: 33.33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropzone  .drop:first-child{
+  align-items: flex-end;
+}
+
+.orders article {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.orders article > *{
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  display: block;
+  text-align: center;
+}
+
+.orders article p{
+  margin-top: 40px;
+}
+
+form[action="/edit"]{
+  background-color: lightblue;
+  }
+  
+  form[action="/edit"] fieldset {
+    border: none;
+  }
+  
+  form[action="/edit"] input[type="text"]{
+    padding: 5px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+  }
+  
+  form[action="/edit"] ul{
+    padding: 0px;
+    list-style-type: none;
+    background-color: #fff;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 0px;
+  }
+  
+  form[action="/edit"] label{
+    display: block;
+    margin: 15px 0px;
+  }
+  
+  form[action="/edit"] ul li{
+    display: inline-block;
+  }
+  
