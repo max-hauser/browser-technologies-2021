@@ -61,6 +61,13 @@ Het hoofddoel van deze applicatie is om tekst op een t-shirt te krijgen, en deze
 * File API
 * Drag & Drop
 
+##### Drag and Drop
+![drag and drop API](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/draganddrop.png)
+
+##### File Reader
+![File Reader API](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/filereader.png)
+
+
 ##### Storage & Files
 * MongoDB
 
