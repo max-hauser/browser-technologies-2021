@@ -27,6 +27,7 @@ if ('serviceWorker' in navigator) {
   const cancel = document.querySelectorAll('.cancel');
   const loginBtn = document.querySelector('label[for="inloggen"]');
   const registerBtn = document.querySelector('label[for="registeren"]');
+  const main = document.querySelector('main');
 
 if(url.length === 0){
 
@@ -124,15 +125,24 @@ if(url.length === 0){
 
   const upload = document.querySelector("#afbeelding");
   upload.addEventListener("change", (e)=>{
-    const input = event.target;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const dataURL = reader.result;
-      const output = document.querySelector(".uploaded");
-      output.src = dataURL;
-      output.style.width = "50px";
+    if(window.FileReader){
+      const input = event.target;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataURL = reader.result;
+        const output = document.querySelector(".uploaded");
+        output.src = dataURL;
+        output.style.width = "50px";
+      }
+        reader.readAsDataURL(input.files[0]);
+    }else{
+      main.insertAdjacentHTML('afterbegin',
+      `<div>
+        <h3>Fotouploaden wordt niet ondersteund</h3>
+        <p>Je kunt ons een extra mail sturen met de foto erbij.</p>
+      </div>
+      `);
     }
-      reader.readAsDataURL(input.files[0]);
   }); 
   
   moveTextBtn.addEventListener('click', (e) =>{
@@ -195,13 +205,6 @@ if(url.length === 0){
       if(form.style.opacity !== 0){
         form.style.opacity = 0;
       }
-      // form.style.opacity = "0";
-      // const radioBtns = document.querySelectorAll('header input[type="radio"]');
-      // radioBtns.forEach((btn) => {
-      //   if(btn.checked == true){
-      //     btn.checked = false;
-      //   }
-      // })
     })
   })
 
