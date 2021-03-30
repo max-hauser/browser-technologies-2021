@@ -33,6 +33,18 @@ bouw je verder en maak je de ervaring beter en beter.
 
 ![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/nieuw-PE.png)
 
+##### De basis
+
+Wanneer de css en javascript uitstaan zie enkel de html nog. Ik heb ervoor gezorgd dat het formulier dat moet worden ingevuld netjes is opgedeeld zodat de gebruiker alsnog een prettige ervaring heeft bij het invullen van het formulier. Dit zorgt voor een goede basis.
+
+#### Met css
+
+Wanneer de css is toegevoegd ziet de gebruiker gelijk een heel ander ontwerp. Ik wil graag de nadruk leggen op de update knop. deze zorgt ervoor dat de gebruiker alsnog kan zien wat er veranderd aan het ontwerp.
+
+#### Met css en javascript
+
+Als de javascript er ook nog bij komt gaat de update knop weg, en kan de gebruiker gelijk de veranderingen zien wanneer ze worden geactiveerd. Verder kan de gebruiker nu ook de tekst en de eventueel geuploaden afbeelding verplaatsen op het t-shirt.
+
 ### Features
 
 #### Core functionality
