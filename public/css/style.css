@@ -30,6 +30,7 @@ header input[value="registeren"]{
   opacity: 0;
   position: absolute;
   z-index: -1;
+  left: 0;
 }
 
 header input[value="inloggen"]:checked ~ form[action="/inloggen"]{
@@ -192,7 +193,6 @@ section.instellingen fieldset {
   border-radius: 10px;
   display: flex;
   width: auto;
-  overflow-x: scroll;
   max-width: 492px;
   justify-content: flex-start;
   align-items: center;
