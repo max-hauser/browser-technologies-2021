@@ -11,12 +11,12 @@
 * [Progressive Enhancement](README.md#Progressive-Enhancement)
 * * [Functional laag](README.md#Functional-laag)
 * * [Usable laag](README.md#Usable-laag)
-* * Pleasureable laag
-* Web technologie
-* * File API
-* * Drag & Drop
-* Browser test
-* Hoe te installeren
+* * [Pleasureable laag](README.md#Pleasureable-laag)
+* [Web technologie](README.md#Web-technologie)
+* * [File API](README.md#File-API)
+* * [Drag & Drop](README.md#Drag-&-Drop)
+* [Browser test](README.md#Browser-test)
+* [Hoe te installeren](README.md#Install-guide)
 
 ***
 
