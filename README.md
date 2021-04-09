@@ -6,11 +6,11 @@
 
 ### Inhoudsopgave:
 * [Over het vak](README.md#Over-het-vak)
-* Gekozen opdracht
-* Hoofdfunctionaliteit
-* Progressive Enhancement
-* * Functional laag
-* * Usable laag
+* [Gekozen opdracht](README.md#Gekozen-opdracht)
+* [Hoofdfunctionaliteit](README.md#Hoofdfunctionaliteit)
+* [Progressive Enhancement](README.md#Progressive-Enhancement)
+* * [Functional laag](README.md#Functional-laag)
+* * [Usable laag](README.md#Usable-laag)
 * * Pleasureable laag
 * Web technologie
 * * File API
@@ -88,6 +88,12 @@ Ik heb het zelfde gedaan met het Drag & Drop systeem. Mocht dit niet worden onde
 * Firefox
 * Safari IOS (mobiel)
 * Samsung browser (mobiel)
+
+**Chrome**
+Ik heb het project op Google Chrome gemaakt, dus daar weet ik zeker dat het helemaal naar behoren werkt.
+
+**Firefox**
+![Firefox test](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/firefox.png)
 
 ### Install guide
 * ``` git clone git@github.com:max-hauser/browser-technologies-2021.git```
