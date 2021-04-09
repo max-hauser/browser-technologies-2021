@@ -480,6 +480,7 @@ section.instellingen{
     margin: 15px 0;
 }
   
+  section.detail form,
   header a:first-child{
     position: static;
   }
