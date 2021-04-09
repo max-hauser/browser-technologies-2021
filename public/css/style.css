@@ -467,4 +467,17 @@ section.instellingen{
   display: static;
 }
   
+  section.instellingen fieldset:before{
+  display: none;
+  }  
+  
+  header{
+  text-align: left;
+  }
+  
+  header a {
+    display: block;
+    margin: 15px 0;
+}
+  
 }
