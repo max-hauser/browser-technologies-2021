@@ -101,6 +101,9 @@ Ik heb het project op Google Chrome gemaakt, dus daar weet ik zeker dat het hele
 #### **Samsung**
 ![Samsung test](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/samsung.png)
 
+#### Test uitslag
+Uit de test is gebleken dat de Drag & Drop systeem niet fijn werkt, ik kan dus beter op mobiel de positie input veld laten zien.
+
 ### Install guide
 * ``` git clone git@github.com:max-hauser/browser-technologies-2021.git```
 * install live-server plugin bij vs-code
