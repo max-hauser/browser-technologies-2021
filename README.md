@@ -5,7 +5,7 @@
 [link naar live webapp](https://tshirtshine.herokuapp.com/)
 
 ### Inhoudsopgave:
-* [!#over-het-vak](Over het vak)
+* [Over het vak](README.md#Over-het-vak)
 * Gekozen opdracht
 * Hoofdfunctionaliteit
 * Progressive Enhancement
