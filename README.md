@@ -51,13 +51,13 @@ PE bestaat uit 3 lagen:
 3. Pleasureable laag
 
 #### Functional laag
-Je begint bij een puur functionele laag. In deze context is dat een html pagina waarbij de relevante informatie goed leesbaar is en de hoofddoel behaald kan worden. (Dit is te zien bij alfbeelding 1 en linker afbeelding)
+Je begint bij een puur functionele laag. In deze context is dat een html pagina waarbij de relevante informatie goed leesbaar is en de hoofddoel behaald kan worden. (Dit is te zien bij alfbeelding 1 en linker afbeelding). In deze laag staat de html op een manier geordend dat het voor de gebruiker overzichtelijk is uit welke onderdelen het formulier bestaat. De gebruiker kan op de knop updaten klikken waarna het formulier wordt opgeslagen in een sessie zodat de instellingen bewaard blijven. Als de gebruiker tevreden is kan er op de bestellen-knop worden geklikt om het definitief op te slaan in een database.
 
 #### Useable laag
 Als de funcional laag goed staat kan de volgende laag worden toegevoegd. Deze laag is de usable laag. In deze laag wordt de functionaliteit uitgebreidt waardoor de gebruikerservaring wordt verbeterd. In dit geval wordt er met css de opmaak van de pagina verbeterd zodat de gebruiker duidelijk kunt zien wat de veranderingen zijn op het t-shirt waarneer de update knop wordt ingedrukt. (dit kan je zien op afbeelding 1 rechtsboven)
 
 #### Pleasurable laag
-Om de gebruikerservaring af te maken kunnen de functionaleiten uitgebreidt worden door middel van Javascript. Ik heb meerdere API's toegevoegd zodat de gebruiker zonder de update knop de data over de t-shirt wordt ge-update en dat de afbeelding en de tekst kunnen worden versleept op het t-shirt. (dit kan je zien op afbeelding 1 rechtsonder)
+Om de gebruikerservaring af te maken kunnen de functionaleiten uitgebreidt worden door middel van Javascript. Ik heb meerdere API's toegevoegd zodat de gebruiker zonder de update knop de data over de t-shirt wordt ge-update en dat de afbeelding en de tekst kunnen worden versleept op het t-shirt. Deze extra functionaliteiten kunnen worden toegevoegd door extra web technologie API's. (dit kan je zien op afbeelding 1 rechtsonder)
 
 #### Afbeelding 1
 ![afbeelding van project](https://github.com/max-hauser/browser-technologies-2021/blob/master/README-IMAGES/nieuw-PE.png)
