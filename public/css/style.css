@@ -464,7 +464,7 @@ select option{
 @media screen and (max-width: 600px) {
 
 section.instellingen{
-  display: static;
+  position: static;
 }
   
   section.instellingen fieldset:before{
@@ -479,5 +479,9 @@ section.instellingen{
     display: block;
     margin: 15px 0;
 }
+  
+  header a:first-child{
+    position: static;
+  }
   
 }
